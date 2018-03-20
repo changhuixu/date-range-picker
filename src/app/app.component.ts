@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DateRange } from '../date-range-picker/date-range';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  dateRange = new DateRange();
 }
