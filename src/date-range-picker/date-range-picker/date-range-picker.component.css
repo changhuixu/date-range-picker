@@ -19,3 +19,6 @@
 .custom-day.weekend {
   color: #ff6e6e;
 }
+.custom-day.disabled {
+  color: #c8cdd2;
+}

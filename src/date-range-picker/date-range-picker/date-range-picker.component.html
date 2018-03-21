@@ -2,15 +2,17 @@
   [displayMonths]="2"
   [dayTemplate]="t"
   [showWeekNumbers]="false"
+  [markDisabled]="isDisabled"
   [firstDayOfWeek]="7">
 </ngb-datepicker>
 
-<ng-template #t let-date="date" let-focused="focused">
+<ng-template #t let-date="date" let-focused="focused" let-disabled="disabled">
   <span class="custom-day"
     [class.focused]="focused"
     [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
     [class.faded]="isHovered(date) || isInside(date)"
     [class.weekend]="isWeekend(date)"
+    [class.disabled]="disabled"
     (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
     {{ date.day }}
   </span>

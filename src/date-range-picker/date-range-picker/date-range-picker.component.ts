@@ -11,17 +11,23 @@ import { equals, before, after } from '../services/NgbDateStructUtils';
 })
 export class DateRangePickerComponent implements OnInit {
   @Input() dateRange: DateRange;
+  @Input() minDate?: Date;
+  @Input() maxDate?: Date;
   @Output() dateRangeChanged = new EventEmitter<DateRange>();
   hoveredDate: NgbDateStruct;
 
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
+  min: NgbDateStruct | null;
+  max: NgbDateStruct | null;
 
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
   ngOnInit() {
     this.fromDate = this.dateAdapter.fromModel(this.dateRange.start);
     this.toDate = this.dateAdapter.fromModel(this.dateRange.end);
+    this.min = this.minDate ? this.dateAdapter.fromModel(this.minDate) : null;
+    this.max = this.maxDate ? this.dateAdapter.fromModel(this.maxDate) : null;
   }
   onDateChange(date: NgbDateStruct) {
     if (!this.fromDate && !this.toDate) {
@@ -53,5 +59,6 @@ export class DateRangePickerComponent implements OnInit {
     const d = new Date(date.year, date.month - 1, date.day);
     return d.getDay() === 0 || d.getDay() === 6;
   }
+  isDisabled = date => after(date, this.max) || before(date, this.min);
   isInFuture = date => after(date, this.toDate);
 }
