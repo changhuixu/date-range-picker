@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "install": "npm i --no-progress --no-optional",
     "start": "ng serve",
     "build:prod": "ng build --prod",
     "build:lib": "rimraf lib && ng-packagr -p ./src/date-range-picker/package.json",
@@ -23,7 +22,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.2",
+    "@ng-bootstrap/ng-bootstrap": "^1.1.0",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",

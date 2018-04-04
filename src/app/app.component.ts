@@ -9,6 +9,8 @@ import { DateRange } from '../date-range-picker/date-range';
 export class AppComponent implements OnInit {
   title = 'app';
   dateRange = new DateRange();
+  dateRange1 = DateRange.nextTwoWeeks();
+  dateRange2 = DateRange.nextMonth();
   maxDate = new Date();
 
   ngOnInit(): void {

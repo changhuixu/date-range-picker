@@ -25,4 +25,6 @@ const after = (one: NgbDateStruct, two: NgbDateStruct) =>
         : one.month > two.month
       : one.year > two.year;
 
-export { equals, before, after };
+const format = (d: NgbDateStruct) => `${d.month}/${d.day}/${d.year}`;
+
+export { equals, before, after, format };

@@ -1,21 +1,31 @@
-import { OnInit, EventEmitter } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { OnInit, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';
+import { NgbDateStruct, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../date-range';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
-export declare class DateRangePickerComponent implements OnInit {
+export declare class DateRangePickerComponent implements OnInit, AfterViewInit {
     private readonly dateAdapter;
+    private elRef;
     dateRange: DateRange;
-    dateRangeChanged: EventEmitter<DateRange>;
+    minDate?: Date;
+    maxDate?: Date;
+    dateRangeChange: EventEmitter<DateRange>;
     hoveredDate: NgbDateStruct;
     fromDate: NgbDateStruct;
     toDate: NgbDateStruct;
-    constructor(dateAdapter: NgbDateNativeAdapter);
+    min: NgbDateStruct | null;
+    max: NgbDateStruct | null;
+    onFirstSelection: boolean;
+    private input;
+    constructor(dateAdapter: NgbDateNativeAdapter, elRef: ElementRef);
     ngOnInit(): void;
-    onDateChange(date: NgbDateStruct): void;
+    ngAfterViewInit(): void;
+    onDateChange(date: NgbDateStruct, dp: NgbInputDatepicker): void;
+    formatInputText(): string;
     isHovered: (date: any) => boolean;
     isInside: (date: any) => boolean;
     isFrom: (date: any) => boolean;
     isTo: (date: any) => boolean;
     isWeekend: (date: any) => boolean;
+    isDisabled: (date: any) => boolean;
     isInFuture: (date: any) => boolean;
 }

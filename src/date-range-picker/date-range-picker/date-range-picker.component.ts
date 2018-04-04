@@ -1,27 +1,30 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';
+import { NgbDateStruct, NgbCalendar, NgbInputDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../date-range';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
-import { equals, before, after } from '../services/NgbDateStructUtils';
+import { equals, before, after, format } from '../services/NgbDateStructUtils';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 
 @Component({
   selector: 'date-range-picker',
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.css']
 })
-export class DateRangePickerComponent implements OnInit {
+export class DateRangePickerComponent implements OnInit, AfterViewInit {
   @Input() dateRange: DateRange;
   @Input() minDate?: Date;
   @Input() maxDate?: Date;
-  @Output() dateRangeChanged = new EventEmitter<DateRange>();
+  @Output() dateRangeChange = new EventEmitter<DateRange>();
   hoveredDate: NgbDateStruct;
 
   fromDate: NgbDateStruct;
   toDate: NgbDateStruct;
   min: NgbDateStruct | null;
   max: NgbDateStruct | null;
+  onFirstSelection = true;
 
-  constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
+  private input: any;
+  constructor(private readonly dateAdapter: NgbDateNativeAdapter, private elRef: ElementRef) {}
 
   ngOnInit() {
     this.fromDate = this.dateAdapter.fromModel(this.dateRange.start);
@@ -29,20 +32,29 @@ export class DateRangePickerComponent implements OnInit {
     this.min = this.minDate ? this.dateAdapter.fromModel(this.minDate) : null;
     this.max = this.maxDate ? this.dateAdapter.fromModel(this.maxDate) : null;
   }
-  onDateChange(date: NgbDateStruct) {
+  ngAfterViewInit() {
+    this.input = this.elRef.nativeElement.querySelector('input');
+  }
+  onDateChange(date: NgbDateStruct, dp: NgbInputDatepicker) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
       this.dateRange.start = this.dateAdapter.toModel(this.fromDate);
     } else if (this.fromDate && !this.toDate && after(date, this.fromDate)) {
       this.toDate = date;
       this.dateRange.end = this.dateAdapter.toModel(this.toDate);
+      dp.close();
     } else {
       this.toDate = null;
       this.fromDate = date;
       this.dateRange.start = this.dateAdapter.toModel(this.fromDate);
       this.dateRange.end = null;
     }
-    this.dateRangeChanged.emit(this.dateRange);
+    this.input.value = this.formatInputText();
+    this.dateRangeChange.emit(this.dateRange);
+  }
+
+  formatInputText() {
+    return `${this.fromDate ? format(this.fromDate) : ''} - ${this.toDate ? format(this.toDate) : ''}`;
   }
 
   isHovered = date =>

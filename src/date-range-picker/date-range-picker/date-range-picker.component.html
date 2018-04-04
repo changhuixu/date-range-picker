@@ -1,10 +1,19 @@
-<ngb-datepicker #dp ngModel (ngModelChange)="onDateChange($event)"
-  [displayMonths]="2"
-  [dayTemplate]="t"
-  [showWeekNumbers]="false"
-  [markDisabled]="isDisabled"
-  [firstDayOfWeek]="7">
-</ngb-datepicker>
+<div class="input-group">
+  <input ngbDatepicker #dp="ngbDatepicker" type="text" class="form-control" style="max-width:200px;" readonly
+    [autoClose]="false"
+    [displayMonths]="2"
+    [dayTemplate]="t"
+    [showWeekNumbers]="false"
+    [markDisabled]="isDisabled"
+    [firstDayOfWeek]="7"
+    (focus)="dp.toggle()"
+    (dateSelect)="onDateChange($event, dp)">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+      <i class="fa fa-calendar" aria-label="date-picker-calendar"></i>
+    </button>
+  </div>
+</div>
 
 <ng-template #t let-date="date" let-focused="focused" let-disabled="disabled">
   <span class="custom-day"
