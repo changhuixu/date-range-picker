@@ -34,6 +34,7 @@ export class DateRangePickerComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.input = this.elRef.nativeElement.querySelector('input');
+    this.input.value = this.formatInputText();
   }
   onDateChange(date: NgbDateStruct, dp: NgbInputDatepicker) {
     if (!this.fromDate && !this.toDate) {
