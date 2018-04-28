@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { NgbDateStruct, NgbCalendar, NgbInputDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../date-range';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
@@ -22,8 +22,8 @@ export class DateRangePickerComponent implements OnInit, AfterViewInit {
   min: NgbDateStruct | null;
   max: NgbDateStruct | null;
   onFirstSelection = true;
+  @ViewChild('dp', {read: ElementRef}) private inputElRef: ElementRef;
 
-  private input: any;
   constructor(private readonly dateAdapter: NgbDateNativeAdapter, private elRef: ElementRef) {}
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class DateRangePickerComponent implements OnInit, AfterViewInit {
       this.dateRange.start = this.dateAdapter.toModel(this.fromDate);
       this.dateRange.end = null;
     }
-    this.input.value = this.formatInputText();
+    this.inputElRef.nativeElement.value = this.formatInputText();
     this.dateRangeChange.emit(this.dateRange);
   }
 
