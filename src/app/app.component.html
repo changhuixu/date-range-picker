@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container my-5">
   <date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate"></date-range-picker>
   <hr>
   <pre>{{ dateRange | json }} </pre>
@@ -10,4 +10,17 @@
   <date-range-picker [(dateRange)]="dateRange2"></date-range-picker>
   <hr>
   <pre>{{ dateRange2 | json }} </pre>
+
+  <date-range-picker [(dateRange)]="dateRange3"></date-range-picker>
+  <hr>
+  <pre>{{ dateRange3 | json }} </pre>
+
+  <date-range-picker [(dateRange)]="dateRange5"></date-range-picker>
+  <hr>
+  <pre>{{ dateRange5 | json }} </pre>
+
+  <date-range-picker [(dateRange)]="dateRange4"></date-range-picker>
+  <hr>
+  <pre>{{ dateRange4 | json }} </pre>
+  <button type="button" class="btn btn-primary" (click)="changedate()">Change Date</button>
 </div>

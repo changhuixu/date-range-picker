@@ -5,19 +5,21 @@ import {
   Output,
   EventEmitter,
   ElementRef,
-  ViewChild
+  ViewChild,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
-import { NgbDateStruct, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import {  NgbInputDatepicker, NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../date-range';
-import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
 import { equals, before, after, format } from '../services/NgbDateStructUtils';
+import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
 
 @Component({
   selector: 'date-range-picker',
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.css']
 })
-export class DateRangePickerComponent implements OnInit {
+export class DateRangePickerComponent implements OnInit, OnChanges {
   @Input()
   dateRange: DateRange;
   @Input()
@@ -26,13 +28,12 @@ export class DateRangePickerComponent implements OnInit {
   maxDate?: Date;
   @Output()
   dateRangeChange = new EventEmitter<DateRange>();
-  hoveredDate: NgbDateStruct;
+  hoveredDate: NgbDate;
 
-  fromDate: NgbDateStruct;
-  toDate: NgbDateStruct;
-  min: NgbDateStruct | null;
-  max: NgbDateStruct | null;
-  onFirstSelection = true;
+  private fromDate: NgbDateStruct;
+  private toDate: NgbDateStruct;
+  private min: NgbDateStruct | null;
+  private max: NgbDateStruct | null;
   @ViewChild('dp', { read: ElementRef })
   private inputElRef: ElementRef;
 
@@ -43,9 +44,17 @@ export class DateRangePickerComponent implements OnInit {
     this.toDate = this.dateAdapter.fromModel(this.dateRange.end);
     this.min = this.minDate ? this.dateAdapter.fromModel(this.minDate) : null;
     this.max = this.maxDate ? this.dateAdapter.fromModel(this.maxDate) : null;
+    if (this.dateRange.start && this.dateRange.end) {
+      this.inputElRef.nativeElement.value = this.formatInputText();
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.dateRange) {
+      this.ngOnInit();
+    }
   }
 
-  onDateChange(date: NgbDateStruct, dp: NgbInputDatepicker) {
+  onDateChange(date: NgbDate, dp: NgbInputDatepicker) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
       this.dateRange.start = this.dateAdapter.toModel(this.fromDate);
@@ -82,7 +91,7 @@ export class DateRangePickerComponent implements OnInit {
   isInside = date => after(date, this.fromDate) && before(date, this.toDate);
   isFrom = date => equals(date, this.fromDate);
   isTo = date => equals(date, this.toDate);
-  isWeekend(date) {
+  isWeekend = (date: NgbDateStruct) {
     const d = new Date(date.year, date.month - 1, date.day);
     return d.getDay() === 0 || d.getDay() === 6;
   }

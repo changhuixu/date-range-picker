@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DateRange } from '@uiowa/date-range-picker';
+import { DateRange } from 'projects/uiowa/date-range-picker/src/public_api';
+// import { DateRange } from '@uiowa/date-range-picker';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,17 @@ export class AppComponent implements OnInit {
   dateRange1 = DateRange.nextTwoWeeks();
   dateRange2 = DateRange.nextMonth();
   maxDate = new Date();
-
+  dateRange3 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
+  dateRange4 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
+  dateRange5 = new DateRange(new Date(2018, 9, 1), null);
   ngOnInit(): void {
     this.maxDate.setDate(this.maxDate.getDate() + 20);
+  }
+
+  changedate() {
+    this.dateRange4 = new DateRange(
+      new Date(2018, 9, 1),
+      new Date(2018, 9, 19)
+    );
   }
 }
