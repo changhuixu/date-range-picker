@@ -5,15 +5,9 @@ import {
   Output,
   EventEmitter,
   ElementRef,
-  AfterViewInit,
   ViewChild
 } from '@angular/core';
-import {
-  NgbDateStruct,
-  NgbCalendar,
-  NgbInputDatepicker,
-  NgbDateParserFormatter
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbInputDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../date-range';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
 import { equals, before, after, format } from '../services/NgbDateStructUtils';
@@ -42,10 +36,7 @@ export class DateRangePickerComponent implements OnInit {
   @ViewChild('dp', { read: ElementRef })
   private inputElRef: ElementRef;
 
-  constructor(
-    private readonly dateAdapter: NgbDateNativeAdapter,
-    private elRef: ElementRef
-  ) {}
+  constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
   ngOnInit() {
     this.fromDate = this.dateAdapter.fromModel(this.dateRange.start);
@@ -78,20 +69,23 @@ export class DateRangePickerComponent implements OnInit {
     }`;
   }
 
-  isHovered = date =>
-    this.fromDate &&
-    !this.toDate &&
-    this.hoveredDate &&
-    after(date, this.fromDate) &&
-    before(date, this.hoveredDate);
+  isHovered(date) {
+    return (
+      this.fromDate &&
+      !this.toDate &&
+      this.hoveredDate &&
+      after(date, this.fromDate) &&
+      before(date, this.hoveredDate)
+    );
+  }
 
   isInside = date => after(date, this.fromDate) && before(date, this.toDate);
   isFrom = date => equals(date, this.fromDate);
   isTo = date => equals(date, this.toDate);
-  isWeekend = date => {
+  isWeekend(date) {
     const d = new Date(date.year, date.month - 1, date.day);
     return d.getDay() === 0 || d.getDay() === 6;
-  };
+  }
   isDisabled = date => after(date, this.max) || before(date, this.min);
   isInFuture = date => after(date, this.toDate);
 }

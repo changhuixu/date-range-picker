@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateRange } from '../date-range-picker/date-range';
+import { DateRange } from '@uiowa/date-range-picker';
 
 @Component({
   selector: 'app-root',

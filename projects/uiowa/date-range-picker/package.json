@@ -1,0 +1,20 @@
+{
+  "name": "@uiowa/date-range-picker",
+  "version": "1.0.0",
+  "author": "Changhui Xu <changhui-xu@uiowa.edu>",
+  "contributors": [
+    "Jacob Feuerbach <jacob-feuerbach@uiowa.edu>"
+  ],
+  "description": "An Angular library for date range picker.",
+  "keywords": ["Angular", "uiowa", "date range picker"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/changhuixu/date-range-picker.git"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@ng-bootstrap/ng-bootstrap": ">=3.0.0"
+  }
+}
