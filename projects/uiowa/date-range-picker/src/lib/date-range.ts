@@ -18,4 +18,32 @@ export class DateRange {
     end.setMonth(end.getMonth() + 1);
     return new DateRange(start, end);
   }
+
+  static createDateRange(start: any, end: any): DateRange {
+    let startDate = null;
+    let endDate = null;
+    if (DateRange.isValidDate(start)) {
+      startDate = new Date(start);
+    }
+    if (DateRange.isValidDate(end)) {
+      endDate = new Date(end);
+    }
+    return new DateRange(startDate, endDate);
+  }
+
+  static isValidDate(value: any): boolean {
+    switch (typeof value) {
+      case 'number':
+        return true;
+      case 'string':
+        return !isNaN(Date.parse(value));
+      case 'object':
+        if (value instanceof Date) {
+          return !isNaN(value.getTime());
+        }
+        break;
+      default:
+        return false;
+    }
+  }
 }

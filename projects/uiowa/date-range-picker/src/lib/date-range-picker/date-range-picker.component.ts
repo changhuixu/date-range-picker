@@ -78,7 +78,12 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
   }
 
   private formatInputText(): string {
-    if (this.dateRange.start && this.dateRange.end) {
+    if (
+      this.dateRange.start &&
+      this.dateRange.end &&
+      DateRange.isValidDate(this.dateRange.start) &&
+      DateRange.isValidDate(this.dateRange.end)
+    ) {
       return `${this.dateRange.start.toLocaleDateString()} - ${this.dateRange.end.toLocaleDateString()}`;
     }
     return '';
