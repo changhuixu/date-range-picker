@@ -35,6 +35,8 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
   private max: NgbDate | null;
   @ViewChild('dp', { read: ElementRef })
   private inputElRef: ElementRef;
+  @ViewChild('dp')
+  private dp: NgbInputDatepicker;
 
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
@@ -44,6 +46,12 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
     this.min = this.minDate ? this.dateAdapter.fromModel(this.minDate) : null;
     this.max = this.maxDate ? this.dateAdapter.fromModel(this.maxDate) : null;
     this.inputElRef.nativeElement.value = this.formatInputText();
+    if (this.fromDate) {
+      this.dp.startDate = {
+        year: this.fromDate.year,
+        month: this.fromDate.month
+      };
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.dateRange) {

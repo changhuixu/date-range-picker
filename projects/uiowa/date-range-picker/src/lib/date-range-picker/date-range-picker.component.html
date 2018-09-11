@@ -1,7 +1,7 @@
 <div class="input-group">
   <input ngbDatepicker #dp="ngbDatepicker" type="text" class="form-control" style="max-width:200px;" readonly
     [autoClose]="false" [displayMonths]="2" [dayTemplate]="t" [showWeekNumbers]="false" [markDisabled]="isDisabled"
-    [firstDayOfWeek]="7" (click)="dp.toggle()" (dateSelect)="onDateChange($event, dp)" [startDate]="{year:dateRange.start.getFullYear(),month:dateRange.start.getMonth()+1}">
+    [firstDayOfWeek]="7" (click)="dp.toggle()" (dateSelect)="onDateChange($event, dp)">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary d-flex align-items-center" (click)="dp.toggle()" type="button">
       <svg aria-hidden="true" role="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

@@ -26,6 +26,11 @@
       <hr>
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange6"></date-range-picker>
+      <pre>{{ dateRange6 | json }} </pre>
+      <hr>
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
       <date-range-picker [(dateRange)]="dateRange4"></date-range-picker>
       <pre>{{ dateRange4 | json }} </pre>
       <button type="button" class="btn btn-primary" (click)="changedate()">Change Date</button>
