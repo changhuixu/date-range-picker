@@ -32,6 +32,10 @@ export class DateRange {
   }
 
   static isValidDate(value: any): boolean {
+    if (!value) {
+      return false;
+    }
+
     switch (typeof value) {
       case 'number':
         return true;
