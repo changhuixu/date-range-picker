@@ -1,26 +1,35 @@
 <div class="container my-5">
-  <date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate"></date-range-picker>
-  <hr>
-  <pre>{{ dateRange | json }} </pre>
-
-  <date-range-picker [(dateRange)]="dateRange1"></date-range-picker>
-  <hr>
-  <pre>{{ dateRange1 | json }} </pre>
-
-  <date-range-picker [(dateRange)]="dateRange2"></date-range-picker>
-  <hr>
-  <pre>{{ dateRange2 | json }} </pre>
-
-  <date-range-picker [(dateRange)]="dateRange3"></date-range-picker>
-  <hr>
-  <pre>{{ dateRange3 | json }} </pre>
-
-  <date-range-picker [(dateRange)]="dateRange5"></date-range-picker>
-  <hr>
-  <pre>{{ dateRange5 | json }} </pre>
-
-  <date-range-picker [(dateRange)]="dateRange4"></date-range-picker>
-  <hr>
-  <pre>{{ dateRange4 | json }} </pre>
-  <button type="button" class="btn btn-primary" (click)="changedate()">Change Date</button>
+  <div class="row">
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate"></date-range-picker>
+      <pre>{{ dateRange | json }} </pre>
+      <hr>
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange1"></date-range-picker>
+      <pre>{{ dateRange1 | json }} </pre>
+      <hr>
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange2"></date-range-picker>
+      <pre>{{ dateRange2 | json }} </pre>
+      <hr>
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange3"></date-range-picker>
+      <pre>{{ dateRange3 | json }} </pre>
+      <hr>
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange5"></date-range-picker>
+      <pre>{{ dateRange5 | json }} </pre>
+      <hr>
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <date-range-picker [(dateRange)]="dateRange4"></date-range-picker>
+      <pre>{{ dateRange4 | json }} </pre>
+      <button type="button" class="btn btn-primary" (click)="changedate()">Change Date</button>
+      <hr>
+    </section>
+  </div>
 </div>

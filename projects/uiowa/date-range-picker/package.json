@@ -6,7 +6,7 @@
     "Jacob Feuerbach <jacob-feuerbach@uiowa.edu>"
   ],
   "description": "An Angular library for date range picker.",
-  "keywords": ["Angular", "uiowa", "date range picker"],
+  "keywords": ["Angular", "uiowa", "date range picker", "bootstrap"],
   "repository": {
     "type": "git",
     "url": "https://github.com/changhuixu/date-range-picker.git"
