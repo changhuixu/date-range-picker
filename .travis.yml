@@ -1,5 +1,7 @@
+sudo: required
 dist: trusty
-sudo: false
+addons:
+  chrome: stable
 
 language: node_js
 node_js:
@@ -10,11 +12,14 @@ branches:
     - master
 
 before_script:
-    - npm install -g firebase-tools
+  - npm install -g firebase-tools
+  # - sudo chown root /opt/google/chrome/chrome-sandbox
+  # - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
 
 script:
   - npm run build:lib
   - npm run build:prod
+  - xvfb-run npm run test:lib
 
 after_success:
   - firebase deploy --token $firebase_token

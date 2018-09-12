@@ -10,7 +10,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { NgbInputDatepicker, NgbDate } from '@ng-bootstrap/ng-bootstrap';
-import { DateRange } from '../date-range';
+import { DateRange } from '../models/date-range';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
 
 @Component({
