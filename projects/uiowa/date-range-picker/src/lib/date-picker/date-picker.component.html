@@ -1,6 +1,6 @@
 <div class="input-group">
   <input ngbDatepicker #d="ngbDatepicker" class="form-control" name="dp" [(ngModel)]="ngbDate" (click)="d.toggle()"
-    readonly (dateSelect)="onDateChange($event, d)">
+    readonly (dateSelect)="onDateChange($event)">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
       <svg aria-hidden="true" role="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
