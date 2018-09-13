@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
   dateRange5 = new DateRange(new Date(2018, 9, 1), null);
   dateRange6 = new DateRange(null, new Date(2018, 9, 1));
   dateRange7 = new DateRange(new Date('sssss'), new Date('aaaa'));
+
+  date8 = new Date(2018, 0, 24);
+
   ngOnInit(): void {
     this.maxDate.setDate(this.maxDate.getDate() + 20);
   }

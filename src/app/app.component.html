@@ -49,5 +49,10 @@
       <button type="button" class="btn btn-primary" (click)="changedate()">Change Date</button>
       <hr>
     </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <strong>Date Picker Example</strong>
+      <date-picker [(date)]="date8"></date-picker>
+      <pre>{{ date8 | json }}</pre>
+    </section>
   </div>
 </div>

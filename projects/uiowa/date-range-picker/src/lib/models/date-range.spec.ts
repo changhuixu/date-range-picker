@@ -27,31 +27,31 @@ describe('isValidDate() tests', () => {
   });
 });
 
-describe('createDateRange() tests', () => {
+describe('create() tests', () => {
   const date1 = new Date(2018, 0, 1);
   const date2 = new Date(2018, 0, 15);
   it('Create Date Range with null and null should return null and null', () => {
-    const actual = DateRange.createDateRange(null, null);
+    const actual = DateRange.create(null, null);
     expect(actual.start).toBe(null);
     expect(actual.end).toBe(null);
   });
   it('Create Date Range with string and string should return null and null', () => {
-    const actual = DateRange.createDateRange('a', 'b');
+    const actual = DateRange.create('a', 'b');
     expect(actual.start).toBe(null);
     expect(actual.end).toBe(null);
   });
   it('Create Date Range with date and null should return date and null', () => {
-    const actual = DateRange.createDateRange(date1, null);
+    const actual = DateRange.create(date1, null);
     expect(actual.start).toEqual(date1);
     expect(actual.end).toBe(null);
   });
   it('Create Date Range with null and date should return null and date', () => {
-    const actual = DateRange.createDateRange(null, date1);
+    const actual = DateRange.create(null, date1);
     expect(actual.start).toBe(null);
     expect(actual.end).toEqual(date1);
   });
   it('Create Date Range with date and date should return date and date', () => {
-    const actual = DateRange.createDateRange(date1, date2);
+    const actual = DateRange.create(date1, date2);
     expect(actual.start).toEqual(date1);
     expect(actual.end).toEqual(date2);
   });

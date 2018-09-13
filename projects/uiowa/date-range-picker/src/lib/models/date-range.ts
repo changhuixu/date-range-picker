@@ -16,7 +16,7 @@ const d2 = new DateRange(new Date(), new Date(2018, 9, 10));
   /**
    * Examples:
  ```typescript
-const d1 = DateRange.nextDays(7); 
+const d1 = DateRange.nextDays(7);
 // a date range of next week since today
  ```
    * @param n Number of days after today.
@@ -31,7 +31,7 @@ const d1 = DateRange.nextDays(7);
   /**
    * Examples:
  ```typescript
-const d1 = DateRange.nextTwoWeeks(); 
+const d1 = DateRange.nextTwoWeeks();
 // a date range of next two weeks since today
  ```
    */
@@ -42,7 +42,7 @@ const d1 = DateRange.nextTwoWeeks();
   /**
    * Examples:
  ```typescript
-const d1 = DateRange.nextMonth(); 
+const d1 = DateRange.nextMonth();
 // a date range of next month since today
  ```
    */
@@ -56,12 +56,12 @@ const d1 = DateRange.nextMonth();
   /**
    * Examples:
  ```typescript
-const d1 = DateRange.createDateRange(); 
+const d1 = DateRange.create({});
  ```
-   * @param start 
-   * @param end 
+   * @param start start date of range you're creating
+   * @param end end date of range you're creating
    */
-  static createDateRange(start: any, end: any): DateRange {
+  static create(start: any, end: any): DateRange {
     let startDate = null;
     let endDate = null;
     if (DateRange.isValidDate(start)) {
@@ -74,8 +74,11 @@ const d1 = DateRange.createDateRange();
   }
 
   /**
-   * 
-   * @param value 
+   * Examples:
+ ```typescript
+const isValid = DateRange.isValidDate(new Date());
+ ```
+   * @param value date you want to verify as date
    */
   static isValidDate(value: any): boolean {
     if (!value) {
