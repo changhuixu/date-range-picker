@@ -1,15 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
-import { NgbDateParserFormatter, NgbDate } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDateNativeParserFormatter } from '../services/ngb-date-native-parser-formatter';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.css'],
-  providers: [
-    { provide: NgbDateNativeParserFormatter, useClass: NgbDateParserFormatter }
-  ]
+  styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent implements OnInit {
   @Input()
