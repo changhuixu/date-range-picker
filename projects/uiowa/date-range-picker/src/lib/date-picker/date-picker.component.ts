@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
@@ -7,7 +15,7 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.css']
 })
-export class DatePickerComponent implements OnInit {
+export class DatePickerComponent implements OnInit, OnChanges {
   @Input()
   date: Date;
 
@@ -20,6 +28,12 @@ export class DatePickerComponent implements OnInit {
 
   ngOnInit() {
     this.ngbDate = this.dateAdapter.fromModel(this.date);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.date) {
+      this.ngOnInit();
+    }
   }
 
   onDateChange(date: NgbDate) {
