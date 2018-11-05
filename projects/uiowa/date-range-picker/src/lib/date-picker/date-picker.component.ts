@@ -18,6 +18,8 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 export class DatePickerComponent implements OnInit, OnChanges {
   @Input()
   date: Date;
+  @Input()
+  disabled ? = false;
 
   @Output()
   dateChange = new EventEmitter<Date>();
@@ -31,7 +33,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.date) {
+    if (changes.date || changes.disabled) {
       this.ngOnInit();
     }
   }

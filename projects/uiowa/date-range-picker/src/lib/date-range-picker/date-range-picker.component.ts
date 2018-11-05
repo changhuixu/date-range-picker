@@ -25,6 +25,8 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
   minDate?: Date;
   @Input()
   maxDate?: Date;
+  @Input()
+  disabled ? = false;
   @Output()
   dateRangeChange = new EventEmitter<DateRange>();
   hoveredDate: NgbDate;
@@ -54,7 +56,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.dateRange) {
+    if (changes.dateRange || changes.disabled) {
       this.ngOnInit();
     }
   }
