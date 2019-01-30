@@ -53,6 +53,20 @@ const d1 = DateRange.nextMonth();
     return new DateRange(start, end);
   }
 
+    /**
+   * Examples:
+ ```typescript
+const d1 = DateRange.lastMonth();
+// a date range of last month till today
+ ```
+   */
+  static lastMonth(): DateRange {
+    const start = new Date();
+    const end = new Date();
+    start.setMonth(start.getMonth() - 1);
+    return new DateRange(start, end);
+  }
+
   /**
    * Examples:
  ```typescript

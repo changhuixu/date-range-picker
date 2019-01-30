@@ -27,6 +27,21 @@ const d5 = DateRange.nextMonth();
 
 ## Usage
 
+```typescript
+import { DateRangePickerModule } from '@uiowa/date-range-picker';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    ...,
+    DateRangePickerModule,
+    ...
+    ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+```
+
 ```html
 // in your component.html
 <date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate"></date-range-picker>
