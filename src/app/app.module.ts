@@ -9,7 +9,7 @@ import { DateRangePickerModule } from '@uiowa/date-range-picker';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, NgbModule.forRoot(), DateRangePickerModule],
+  imports: [BrowserModule, NgbModule, DateRangePickerModule],
   providers: [],
   bootstrap: [AppComponent]
 })
