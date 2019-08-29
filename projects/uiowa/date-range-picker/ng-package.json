@@ -3,11 +3,6 @@
   "dest": "../../../dist/uiowa/date-range-picker",
   "lib": {
     "entryFile": "src/public-api.ts",
-    "externals": {
-      "@angular/common": "@angular/common",
-      "@angular/core": "@angular/core",
-      "@ng-bootstrap/ng-bootstrap": "@ng-bootstrap/ng-bootstrap"
-    },
     "umdModuleIds": {
       "@ng-bootstrap/ng-bootstrap": "@ng-bootstrap/ng-bootstrap"
     }
