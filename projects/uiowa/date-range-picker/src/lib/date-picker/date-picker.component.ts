@@ -19,7 +19,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
   @Input()
   date: Date;
   @Input()
-  disabled ? = false;
+  disabled? = false;
 
   @Output()
   dateChange = new EventEmitter<Date>();
