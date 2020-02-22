@@ -1,6 +1,6 @@
 {
   "name": "@uiowa/date-range-picker",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "author": "Changhui Xu <changhui-xu@uiowa.edu>",
   "contributors": [
     "Jacob Feuerbach <jacob-feuerbach@uiowa.edu>"
@@ -18,8 +18,9 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": ">=8.0.0",
-    "@angular/core": ">=8.0.0",
-    "@ng-bootstrap/ng-bootstrap": ">=4.0.0"
+    "@angular/common": ">=9.0.0",
+    "@angular/core": ">=9.0.0",
+    "@angular/localize": ">=9.0.0",
+    "@ng-bootstrap/ng-bootstrap": ">=6.0.0"
   }
 }

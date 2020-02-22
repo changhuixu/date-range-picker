@@ -11,21 +11,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@uiowa/date-range-picker": [
-        "dist/uiowa/date-range-picker"
-      ],
-      "@uiowa/date-range-picker/*": [
-        "dist/uiowa/date-range-picker/*"
-      ]
-    }
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

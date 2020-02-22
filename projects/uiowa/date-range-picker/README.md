@@ -2,6 +2,8 @@
 
 An Angular library of Date Range Picker. Dependencies: Angular, ng-bootstrap, Bootstrap 4 (css)
 
+Since **v3.0.0**, this library requires @angular/localize, due to updates in Angular 9 and ng-bootstrap 6.
+
 [![Build Status](https://img.shields.io/travis/changhuixu/date-range-picker/master.svg?label=Travis%20CI&style=flat-square)](https://travis-ci.org/changhuixu/date-range-picker)
 [![npm](https://img.shields.io/npm/v/@uiowa/date-range-picker.svg?style=flat-square)](https://www.npmjs.com/package/@uiowa/date-range-picker)
 
@@ -44,7 +46,10 @@ import { DateRangePickerModule } from '@uiowa/date-range-picker';
 
 ```html
 // in your component.html
-<date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate"></date-range-picker>
+<date-range-picker
+  [(dateRange)]="dateRange"
+  [maxDate]="maxDate"
+></date-range-picker>
 <date-picker [(date)]="date"></date-picker>
 ```
 
