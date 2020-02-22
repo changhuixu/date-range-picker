@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -41,7 +41,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -132,6 +131,11 @@
           "options": {
             "tsConfig": "projects/uiowa/date-range-picker/tsconfig.lib.json",
             "project": "projects/uiowa/date-range-picker/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/uiowa/date-range-picker/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -155,6 +159,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "date-range-picker-demo"
+    }
+  },
+  "defaultProject": "date-range-picker-demo",
+  "cli": {
+    "analytics": "df19d77b-6da3-4f9c-b35c-e657d4ffc8df"
+  }
 }
