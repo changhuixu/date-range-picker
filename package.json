@@ -9,6 +9,9 @@
     "build:lib": "ng build @uiowa/date-range-picker --prod",
     "test": "ng test",
     "test:lib": "ng test @uiowa/date-range-picker --watch=false --code-coverage",
+    "cypress:open": "start-server-and-test start 4200 \"cypress open\"",
+    "cypress:verify": "cypress verify",
+    "cypress:run": "start-server-and-test start 4200 \"cypress run\"",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -36,7 +39,9 @@
     "@angular/compiler-cli": "~9.1.1",
     "@angular/language-service": "~9.1.1",
     "@types/node": "^12.11.1",
+    "cypress": "^4.4.0",
     "ng-packagr": "^9.0.0",
+    "start-server-and-test": "^1.10.11",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
