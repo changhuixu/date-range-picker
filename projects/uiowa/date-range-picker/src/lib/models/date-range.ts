@@ -11,7 +11,10 @@ const d2 = new DateRange(new Date(), new Date(2018, 9, 10));
    * @param start [Optional] Start Date. Default: null.
    * @param end [Optional] End Date. Default: null
    */
-  constructor(public start: Date = null, public end: Date = null) {}
+  constructor(
+    public start: Date | null = null,
+    public end: Date | null = null
+  ) {}
 
   /**
    * Examples:
@@ -53,7 +56,7 @@ const d1 = DateRange.nextMonth();
     return new DateRange(start, end);
   }
 
-    /**
+  /**
    * Examples:
  ```typescript
 const d1 = DateRange.lastMonth();

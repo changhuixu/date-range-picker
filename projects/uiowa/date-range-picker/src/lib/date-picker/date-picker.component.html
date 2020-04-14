@@ -7,6 +7,8 @@
     [(ngModel)]="ngbDate"
     (click)="d.toggle()"
     [disabled]="disabled"
+    [firstDayOfWeek]="7"
+    [dayTemplate]="t"
     readonly
     (dateSelect)="onDateChange($event)"
     style="max-width:208px;"
@@ -31,3 +33,13 @@
     </button>
   </div>
 </div>
+
+<ng-template #t let-date="date" let-currentMonth="currentMonth">
+  <span
+    class="custom-day"
+    [class.weekend]="isWeekend(date)"
+    [class.outside]="date.month !== currentMonth"
+  >
+    {{ date.day }}
+  </span>
+</ng-template>

@@ -7,8 +7,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'date-picker',
@@ -29,7 +28,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
   ngOnInit() {
-    this.ngbDate = this.dateAdapter.fromModel(this.date);
+    this.ngbDate = NgbDate.from(this.dateAdapter.fromModel(this.date));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -40,5 +39,10 @@ export class DatePickerComponent implements OnInit, OnChanges {
 
   onDateChange(date: NgbDate) {
     this.dateChange.emit(this.dateAdapter.toModel(date));
+  }
+
+  isWeekend(date: NgbDate) {
+    const d = new Date(date.year, date.month - 1, date.day);
+    return d.getDay() === 0 || d.getDay() === 6;
   }
 }

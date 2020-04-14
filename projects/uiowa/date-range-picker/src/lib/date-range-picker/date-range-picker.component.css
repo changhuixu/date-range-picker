@@ -21,11 +21,15 @@
 }
 
 .custom-day.weekend {
-  color: #ff6e6e;
+  color: #d81e1e;
 }
 
 .custom-day.disabled {
   color: #c8cdd2;
+}
+
+.custom-day.outside {
+  opacity: 0.5;
 }
 
 svg {

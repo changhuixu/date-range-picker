@@ -9,9 +9,12 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { NgbInputDatepicker, NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbInputDatepicker,
+  NgbDate,
+  NgbDateNativeAdapter
+} from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../models/date-range';
-import { NgbDateNativeAdapter } from '../services/NgbDateNativeAdapter';
 
 @Component({
   selector: 'date-range-picker',
@@ -43,10 +46,16 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
   ngOnInit() {
-    this.fromDate = this.dateAdapter.fromModel(this.dateRange.start);
-    this.toDate = this.dateAdapter.fromModel(this.dateRange.end);
-    this.min = this.minDate ? this.dateAdapter.fromModel(this.minDate) : null;
-    this.max = this.maxDate ? this.dateAdapter.fromModel(this.maxDate) : null;
+    this.fromDate = NgbDate.from(
+      this.dateAdapter.fromModel(this.dateRange.start)
+    );
+    this.toDate = NgbDate.from(this.dateAdapter.fromModel(this.dateRange.end));
+    this.min = NgbDate.from(
+      this.minDate ? this.dateAdapter.fromModel(this.minDate) : null
+    );
+    this.max = NgbDate.from(
+      this.maxDate ? this.dateAdapter.fromModel(this.maxDate) : null
+    );
     this.inputElRef.nativeElement.value = this.formatInputText();
     if (this.fromDate) {
       this.dp.startDate = {

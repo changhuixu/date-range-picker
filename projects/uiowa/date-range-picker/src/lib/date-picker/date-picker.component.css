@@ -1,3 +1,21 @@
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.custom-day.weekend {
+  color: #d81e1e;
+}
+.custom-day.disabled {
+  color: #c8cdd2;
+}
+
+.custom-day.outside {
+  opacity: 0.5;
+}
+
 svg {
   width: 1rem;
   height: 1rem;

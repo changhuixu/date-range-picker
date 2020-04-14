@@ -37,7 +37,13 @@
   </div>
 </div>
 
-<ng-template #t let-date="date" let-focused="focused" let-disabled="disabled">
+<ng-template
+  #t
+  let-date="date"
+  let-focused="focused"
+  let-disabled="disabled"
+  let-currentMonth="currentMonth"
+>
   <span
     class="custom-day"
     [class.focused]="focused"
@@ -45,6 +51,7 @@
     [class.faded]="isHovered(date) || isInside(date)"
     [class.weekend]="isWeekend(date)"
     [class.disabled]="disabled"
+    [class.outside]="date.month !== currentMonth"
     (mouseenter)="hoveredDate = date"
     (mouseleave)="hoveredDate = null"
   >
