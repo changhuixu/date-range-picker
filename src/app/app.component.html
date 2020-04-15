@@ -1,61 +1,76 @@
 <div class="container my-5">
   <div class="row">
-    <a title="source code" href="https://github.com/changhuixu/date-range-picker">GitHub Repo</a>
+    <a
+      title="source code"
+      href="https://github.com/changhuixu/date-range-picker"
+      >GitHub Repo</a
+    >
   </div>
   <div class="row">
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
-      <strong>Max Date Example and opens in the past</strong>
-      <date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate"></date-range-picker>
-      <pre>{{ dateRange | json }} </pre>
-      <hr>
-    </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section data-cy="regular-date-range" class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Regular</strong>
       <date-range-picker [(dateRange)]="dateRange1"></date-range-picker>
       <pre>{{ dateRange1 | json }} </pre>
-      <hr>
+      <hr />
+    </section>
+    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+      <strong>Max Date Example and opens in the past</strong>
+      <date-range-picker
+        [(dateRange)]="dateRange"
+        [maxDate]="maxDate"
+      ></date-range-picker>
+      <pre>{{ dateRange | json }} </pre>
+      <hr />
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Longer Range</strong>
       <date-range-picker [(dateRange)]="dateRange2"></date-range-picker>
       <pre>{{ dateRange2 | json }} </pre>
-      <hr>
+      <hr />
     </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section
+      data-cy="both-dates-not-null"
+      class="col-12 col-sm-6 col-lg-4 mb-4"
+    >
       <strong>Both Dates Not Null</strong>
       <date-range-picker [(dateRange)]="dateRange3"></date-range-picker>
       <pre>{{ dateRange3 | json }} </pre>
-      <hr>
+      <hr />
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Not Null Start Date / Null End date</strong>
       <date-range-picker [(dateRange)]="dateRange5"></date-range-picker>
       <pre>{{ dateRange5 | json }} </pre>
-      <hr>
+      <hr />
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Null Start Date / Not Null End date</strong>
       <date-range-picker [(dateRange)]="dateRange6"></date-range-picker>
       <pre>{{ dateRange6 | json }} </pre>
-      <hr>
+      <hr />
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Non-Date input example</strong>
       <date-range-picker [(dateRange)]="dateRange7"></date-range-picker>
       <pre>{{ dateRange7 | json }} </pre>
-      <hr>
+      <hr />
     </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section
+      data-cy="change-date-with-button"
+      class="col-12 col-sm-6 col-lg-4 mb-4"
+    >
       <strong>Change Date with Button Example</strong>
       <date-range-picker [(dateRange)]="dateRange4"></date-range-picker>
       <pre>{{ dateRange4 | json }} </pre>
-      <button type="button" class="btn btn-primary" (click)="changedate()">Change Date</button>
-      <hr>
+      <button type="button" class="btn btn-primary" (click)="changedate()">
+        Change Date
+      </button>
+      <hr />
     </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section id="date-picker" class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Date Picker Example</strong>
       <date-picker [(date)]="date8"></date-picker>
-      <pre>{{ date8 | json }}</pre>
+      <pre id="date8">{{ date8 | json }}</pre>
     </section>
   </div>
 </div>

@@ -116,4 +116,27 @@ const isValid = DateRange.isValidDate(new Date());
         return false;
     }
   }
+
+  equals(dateRange: DateRange): boolean {
+    if (!dateRange) {
+      return false;
+    }
+    return (
+      this._dateEqual(dateRange.start, this.start) &&
+      this._dateEqual(dateRange.end, this.end)
+    );
+  }
+
+  private _dateEqual(date1: Date | null, date2: Date | null): boolean {
+    if (date1 === null) {
+      return date2 === null;
+    }
+    if (date2 === null) {
+      return false;
+    }
+    return (
+      new Date(date1).toLocaleDateString() ===
+      new Date(date2).toLocaleDateString()
+    );
+  }
 }
