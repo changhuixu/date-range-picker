@@ -7,7 +7,7 @@ describe('date-picker tests', () => {
     cy.get('date-picker input')
       .should('have.value', '01/24/2018')
       .should('have.attr', 'readonly');
-    cy.get('#date8').should('have.text', '"2018-01-24T06:00:00.000Z"');
+    cy.get('#date8').should('have.text', JSON.stringify(new Date(2018, 0, 24)));
     cy.get('ngb-datepicker').should('not.exist');
   });
 
