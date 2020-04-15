@@ -7,6 +7,12 @@
     >
   </div>
   <div class="row">
+    <section data-cy="regular-date-range" class="col-12 col-sm-6 col-lg-4 mb-4">
+      <strong>Regular</strong>
+      <date-range-picker [(dateRange)]="dateRange1"></date-range-picker>
+      <pre>{{ dateRange1 | json }} </pre>
+      <hr />
+    </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
       <strong>Max Date Example and opens in the past</strong>
       <date-range-picker
@@ -14,12 +20,6 @@
         [maxDate]="maxDate"
       ></date-range-picker>
       <pre>{{ dateRange | json }} </pre>
-      <hr />
-    </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
-      <strong>Regular</strong>
-      <date-range-picker [(dateRange)]="dateRange1"></date-range-picker>
-      <pre>{{ dateRange1 | json }} </pre>
       <hr />
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">

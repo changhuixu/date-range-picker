@@ -47,18 +47,47 @@ describe('Unit Test DateRange Model Class', () => {
     });
     it('Create Date Range with date and null should return date and null', () => {
       const actual = DateRange.create(date1, null);
-      expect(actual.start.toString()).to.equal(date1.toString());
+      expect(actual.start!.toString()).to.equal(date1.toString());
       expect(actual.end).to.be.null;
     });
     it('Create Date Range with null and date should return null and date', () => {
       const actual = DateRange.create(null, date1);
       expect(actual.start).to.be.null;
-      expect(actual.end.toString()).to.equal(date1.toString());
+      expect(actual.end!.toString()).to.equal(date1.toString());
     });
     it('Create Date Range with date and date should return date and date', () => {
       const actual = DateRange.create(date1, date2);
-      expect(actual.start.toString()).to.equal(date1.toString());
-      expect(actual.end.toString()).to.equal(date2.toString());
+      expect(actual.start!.toString()).to.equal(date1.toString());
+      expect(actual.end!.toString()).to.equal(date2.toString());
+    });
+  });
+
+  context('equals() tests', () => {
+    const date1 = new Date(2018, 0, 1, 12);
+    const date2 = new Date(2018, 0, 1, 6);
+    const date3 = new Date(2018, 0, 15);
+    const a1 = new DateRange(date1, date3);
+    const a2 = new DateRange(date2, date3);
+    const b1 = new DateRange(null, null);
+    const b2 = new DateRange(null, null);
+    const c1 = new DateRange(date1, null);
+    const c2 = new DateRange(date1, null);
+    const d1 = new DateRange(null, date3);
+    const d2 = new DateRange(null, date3);
+    const e1 = new DateRange(null, new Date());
+    const e2 = new DateRange(null, new Date());
+    const f1 = new DateRange(null, date3);
+    const f2 = new DateRange(null, new Date());
+    const g1 = new DateRange(new Date(), date3);
+    const g2 = new DateRange(null, new Date());
+    it('should correctly test equality', () => {
+      expect(a1.equals(a2)).to.be.true;
+      expect(b1.equals(b2)).to.be.true;
+      expect(c1.equals(c2)).to.be.true;
+      expect(d1.equals(d2)).to.be.true;
+      expect(e1.equals(e2)).to.be.true;
+      expect(f1.equals(f2)).to.be.false;
+      expect(g1.equals(g2)).to.be.false;
     });
   });
 });
