@@ -28,7 +28,10 @@
       <pre>{{ dateRange2 | json }} </pre>
       <hr />
     </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section
+      data-cy="both-dates-not-null"
+      class="col-12 col-sm-6 col-lg-4 mb-4"
+    >
       <strong>Both Dates Not Null</strong>
       <date-range-picker [(dateRange)]="dateRange3"></date-range-picker>
       <pre>{{ dateRange3 | json }} </pre>
@@ -52,7 +55,10 @@
       <pre>{{ dateRange7 | json }} </pre>
       <hr />
     </section>
-    <section class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section
+      data-cy="change-date-with-button"
+      class="col-12 col-sm-6 col-lg-4 mb-4"
+    >
       <strong>Change Date with Button Example</strong>
       <date-range-picker [(dateRange)]="dateRange4"></date-range-picker>
       <pre>{{ dateRange4 | json }} </pre>
