@@ -7,6 +7,10 @@ Since **v3.0.0**, this library requires @angular/localize, due to updates in Ang
 [![Build Status](https://img.shields.io/travis/changhuixu/date-range-picker/master.svg?label=Travis%20CI&style=flat-square)](https://travis-ci.org/changhuixu/date-range-picker)
 [![npm](https://img.shields.io/npm/v/@uiowa/date-range-picker.svg?style=flat-square)](https://www.npmjs.com/package/@uiowa/date-range-picker)
 
+```bash
+npm i @uiowa/date-range-picker
+```
+
 ## [Demo](https://date-range-picker.firebaseapp.com)
 
 ## Models
