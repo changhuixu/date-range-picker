@@ -35,7 +35,7 @@ describe('date-picker tests', () => {
   it('should change date when click on Jan 18', () => {
     cy.get('date-picker input').click();
     cy.get('ngb-datepicker').should('have.class', 'show');
-    cy.get('.custom-day').then(days => {
+    cy.get('.custom-day').then((days) => {
       // should show correct number of days
       expect(days.length).to.be.equal(42);
 
@@ -45,9 +45,7 @@ describe('date-picker tests', () => {
         .to.have.class('outside')
         .to.have.class('weekend')
         .to.have.class('custom-day');
-      expect(days[1])
-        .to.contain('1')
-        .to.have.class('custom-day');
+      expect(days[1]).to.contain('1').to.have.class('custom-day');
       expect(days[6])
         .to.contain('6')
         .to.have.class('weekend')
@@ -63,19 +61,19 @@ describe('date-picker tests', () => {
         .to.have.class('outside')
         .to.have.class('weekend')
         .to.have.class('custom-day');
-
-      // pick another day
-      days[18].click();
-      cy.get('date-picker input')
-        .should('have.value', '01/18/2018')
-        .should('have.attr', 'readonly');
-      cy.get('#date8').should(
-        'have.text',
-        JSON.stringify(new Date(2018, 0, 18, 12))
-      );
-
-      // should close calendar after picking a date
-      cy.get('ngb-datepicker').should('not.exist');
     });
+
+    // pick another day
+    cy.get('[aria-label="Thursday, January 18, 2018"] > .custom-day').click();
+    cy.get('date-picker input')
+      .should('have.value', '01/18/2018')
+      .should('have.attr', 'readonly');
+    cy.get('#date8').should(
+      'have.text',
+      JSON.stringify(new Date(2018, 0, 18, 12))
+    );
+
+    // should close calendar after picking a date
+    cy.get('ngb-datepicker').should('not.exist');
   });
 });

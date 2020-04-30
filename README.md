@@ -13,6 +13,8 @@ npm i @uiowa/date-range-picker
 
 ## [Demo](https://date-range-picker.firebaseapp.com)
 
+![date range picker demo](./date-range-picker-demo.gif)
+
 ## Models
 
 - `DateRange`: an object represents a date range, includes start date and end date. e.g.,

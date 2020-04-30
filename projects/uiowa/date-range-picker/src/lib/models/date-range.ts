@@ -111,32 +111,43 @@ const isValid = DateRange.isValidDate(new Date());
         if (value instanceof Date) {
           return !isNaN(value.getTime());
         }
-        break;
       default:
         return false;
     }
   }
 
+  /**
+   * Examples:
+ ```typescript
+const a = new DateRange();
+const isEqual = a.equals(new DateRange());
+ ```
+   * @param dateRange another DateRange object
+   */
   equals(dateRange: DateRange): boolean {
     if (!dateRange) {
       return false;
     }
     return (
-      this._dateEqual(dateRange.start, this.start) &&
-      this._dateEqual(dateRange.end, this.end)
+      DateRange.dateEqual(dateRange.start, this.start) &&
+      DateRange.dateEqual(dateRange.end, this.end)
     );
   }
 
-  private _dateEqual(date1: Date | null, date2: Date | null): boolean {
+  /**
+   *
+   * @param date1 a Date object or NULL
+   * @param date2 a Date object or NULL
+   */
+  static dateEqual(date1: Date | null, date2: Date | null): boolean {
     if (date1 === null) {
       return date2 === null;
-    }
-    if (date2 === null) {
+    } else if (date2 === null) {
       return false;
     }
-    return (
-      new Date(date1).toLocaleDateString() ===
-      new Date(date2).toLocaleDateString()
-    );
+
+    const d1 = date1 instanceof Date ? date1 : new Date(date1);
+    const d2 = date2 instanceof Date ? date2 : new Date(date2);
+    return d1.toLocaleDateString() === d2.toLocaleDateString();
   }
 }
