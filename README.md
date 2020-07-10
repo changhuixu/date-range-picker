@@ -4,6 +4,8 @@ An Angular library of Date Range Picker. Dependencies: Angular, ng-bootstrap, Bo
 
 Since **v3.0.0**, this library requires @angular/localize, due to updates in Angular 9 and ng-bootstrap 6.
 
+Since **v4.0.0**, this library is only compatible with Angular >=10 and ng-bootstrap >=7.
+
 [![Build Status](https://img.shields.io/travis/changhuixu/date-range-picker/master.svg?label=Travis%20CI&style=flat-square)](https://travis-ci.org/changhuixu/date-range-picker)
 [![npm](https://img.shields.io/npm/v/@uiowa/date-range-picker.svg?style=flat-square)](https://www.npmjs.com/package/@uiowa/date-range-picker)
 
