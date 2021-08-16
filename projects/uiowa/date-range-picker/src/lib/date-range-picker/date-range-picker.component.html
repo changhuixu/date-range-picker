@@ -4,7 +4,7 @@
     #dp="ngbDatepicker"
     type="text"
     class="form-control"
-    style="max-width:208px;"
+    style="max-width: 208px; cursor: pointer"
     readonly
     [disabled]="disabled"
     [autoClose]="false"
@@ -15,6 +15,7 @@
     [firstDayOfWeek]="7"
     (click)="dp.toggle()"
     (dateSelect)="onDateChange($event, dp)"
+    title="click to select a date range"
   />
   <div class="input-group-append">
     <button
@@ -47,7 +48,9 @@
   <span
     class="custom-day"
     [class.focused]="focused"
-    [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+    [class.range]="
+      isFrom(date) || isTo(date) || isInside(date) || isHovered(date)
+    "
     [class.faded]="isHovered(date) || isInside(date)"
     [class.weekend]="isWeekend(date)"
     [class.disabled]="disabled"
