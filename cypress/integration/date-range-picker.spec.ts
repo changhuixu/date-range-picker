@@ -1,4 +1,4 @@
-import { AppComponent } from '../../src/app/app.component';
+import { DateRange } from '../../projects/uiowa/date-range-picker/src/lib/models/date-range';
 
 describe('date-range-picker tests', () => {
   before(() => {
@@ -6,7 +6,7 @@ describe('date-range-picker tests', () => {
   });
 
   it('should show initial state: 1', () => {
-    const dateRange = new AppComponent().dateRange1;
+    const dateRange = DateRange.nextTwoWeeks();
     const dateRangeString = `${dateRange.start!.toLocaleDateString()} - ${dateRange.end!.toLocaleDateString()}`;
     cy.get('[data-cy=regular-date-range] input')
       .should('have.value', dateRangeString)
@@ -36,7 +36,7 @@ describe('date-range-picker tests', () => {
   });
 
   it('should show initial state: 2', () => {
-    const dateRange = new AppComponent().dateRange3;
+    const dateRange = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
     const dateRangeString = `${dateRange.start!.toLocaleDateString()} - ${dateRange.end!.toLocaleDateString()}`;
     cy.get('[data-cy=both-dates-not-null] input')
       .should('have.value', dateRangeString)

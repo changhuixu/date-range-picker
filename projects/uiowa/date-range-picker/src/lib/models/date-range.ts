@@ -107,11 +107,10 @@ const isValid = DateRange.isValidDate(new Date());
         return true;
       case 'string':
         return !isNaN(Date.parse(value));
-      case 'object':
+      default:
         if (value instanceof Date) {
           return !isNaN(value.getTime());
         }
-      default:
         return false;
     }
   }

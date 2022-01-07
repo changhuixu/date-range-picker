@@ -5,7 +5,7 @@ import { DateRange } from '../../projects/uiowa/date-range-picker/src/public-api
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));

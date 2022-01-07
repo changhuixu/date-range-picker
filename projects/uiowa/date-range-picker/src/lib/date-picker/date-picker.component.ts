@@ -5,25 +5,25 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { NgbDate, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.css']
+  styleUrls: ['./date-picker.component.css'],
 })
 export class DatePickerComponent implements OnInit, OnChanges {
   @Input()
-  date: Date;
+  date: Date | null = null;
   @Input()
-  disabled? = false;
+  disabled = false;
 
   @Output()
   dateChange = new EventEmitter<Date>();
 
-  ngbDate: NgbDate;
+  ngbDate: NgbDate | null = null;
 
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
@@ -32,13 +32,14 @@ export class DatePickerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.date || changes.disabled) {
+    if (changes['date'] || changes['disabled']) {
       this.ngOnInit();
     }
   }
 
   onDateChange(date: NgbDate) {
-    this.dateChange.emit(this.dateAdapter.toModel(date));
+    const newDate = this.dateAdapter.toModel(date);
+    if (newDate) this.dateChange.emit(newDate);
   }
 
   isWeekend(date: NgbDate) {

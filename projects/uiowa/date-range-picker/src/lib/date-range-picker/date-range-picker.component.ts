@@ -7,41 +7,41 @@ import {
   ElementRef,
   ViewChild,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import {
   NgbInputDatepicker,
   NgbDate,
-  NgbDateNativeAdapter
+  NgbDateNativeAdapter,
 } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../models/date-range';
 
 @Component({
   selector: 'date-range-picker',
   templateUrl: './date-range-picker.component.html',
-  styleUrls: ['./date-range-picker.component.css']
+  styleUrls: ['./date-range-picker.component.css'],
 })
 export class DateRangePickerComponent implements OnInit, OnChanges {
   @Input()
-  dateRange: DateRange;
+  dateRange: DateRange = new DateRange();
   @Input()
   minDate?: Date;
   @Input()
   maxDate?: Date;
   @Input()
-  disabled? = false;
+  disabled = false;
   @Output()
   dateRangeChange = new EventEmitter<DateRange>();
-  hoveredDate: NgbDate;
+  hoveredDate: NgbDate | null = null;
 
-  private fromDate: NgbDate;
-  private toDate: NgbDate;
-  private min: NgbDate | null;
-  private max: NgbDate | null;
+  private fromDate: NgbDate | null = null;
+  private toDate: NgbDate | null = null;
+  private min: NgbDate | null = null;
+  private max: NgbDate | null = null;
   @ViewChild('dp', { read: ElementRef, static: true })
-  private inputElRef: ElementRef;
+  private inputElRef!: ElementRef;
   @ViewChild('dp', { static: true })
-  private dp: NgbInputDatepicker;
+  private dp!: NgbInputDatepicker;
 
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
@@ -60,12 +60,12 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
     if (this.fromDate) {
       this.dp.startDate = {
         year: this.fromDate.year,
-        month: this.fromDate.month
+        month: this.fromDate.month,
       };
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.dateRange || changes.disabled) {
+    if (changes['dateRange'] || changes['disabled']) {
       this.ngOnInit();
     }
   }
@@ -100,7 +100,7 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
     return '';
   }
 
-  isHovered(date) {
+  isHovered(date: NgbDate) {
     return (
       this.fromDate &&
       !this.toDate &&
@@ -110,13 +110,14 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
     );
   }
 
-  isInside = date => date.after(this.fromDate) && date.before(this.toDate);
-  isFrom = date => date.equals(this.fromDate);
-  isTo = date => date.equals(this.toDate);
+  isInside = (date: NgbDate) =>
+    date.after(this.fromDate) && date.before(this.toDate);
+  isFrom = (date: NgbDate) => date.equals(this.fromDate);
+  isTo = (date: NgbDate) => date.equals(this.toDate);
   isWeekend(date: NgbDate) {
     const d = new Date(date.year, date.month - 1, date.day);
     return d.getDay() === 0 || d.getDay() === 6;
   }
-  isDisabled = date => date.after(this.max) || date.before(this.min);
-  isInFuture = date => date.after(this.toDate);
+  isDisabled = (date: NgbDate) => date.after(this.max) || date.before(this.min);
+  isInFuture = (date: NgbDate) => date.after(this.toDate);
 }
