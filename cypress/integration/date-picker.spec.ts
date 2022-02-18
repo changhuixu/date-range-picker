@@ -19,9 +19,9 @@ describe('date-picker tests', () => {
   });
 
   it('should click icon and open', () => {
-    cy.get('date-picker > .input-group > .input-group-append > .btn').click();
+    cy.get('date-picker > .input-group > .btn').click();
     cy.get('ngb-datepicker').should('have.class', 'show');
-    cy.get('date-picker > .input-group > .input-group-append > .btn').click();
+    cy.get('date-picker > .input-group > .btn').click();
     cy.get('ngb-datepicker').should('not.exist');
   });
 
