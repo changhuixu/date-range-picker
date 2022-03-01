@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
 
-  changedate() {
+  changeDate() {
     this.dateRange4 = new DateRange(
       new Date(2018, 9, 1),
       new Date(2018, 9, 19)
