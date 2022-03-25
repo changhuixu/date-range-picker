@@ -6,6 +6,7 @@
     class="form-control"
     style="max-width: 208px; cursor: pointer"
     readonly
+    [attr.id]="id"
     [disabled]="disabled"
     [autoClose]="false"
     [displayMonths]="2"
@@ -14,6 +15,7 @@
     [markDisabled]="isDisabled"
     [firstDayOfWeek]="7"
     (click)="dp.toggle()"
+    (keydown.enter)="dp.toggle()"
     (dateSelect)="onDateChange($event, dp)"
     title="click to select a date range"
   />

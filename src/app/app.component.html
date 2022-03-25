@@ -23,8 +23,11 @@
       <hr />
     </section>
     <section class="col-12 col-sm-6 col-lg-4 mb-4">
-      <strong>Longer Range</strong>
-      <date-range-picker [(dateRange)]="dateRange2"></date-range-picker>
+      <label for="date-range-picker3" class="fw-bold">Longer Range</label>
+      <date-range-picker
+        [id]="'date-range-picker3'"
+        [(dateRange)]="dateRange2"
+      ></date-range-picker>
       <pre>{{ dateRange2 | json }} </pre>
       <hr />
     </section>
@@ -68,8 +71,8 @@
       <hr />
     </section>
     <section id="date-picker" class="col-12 col-sm-6 col-lg-4 mb-4">
-      <strong>Date Picker Example</strong>
-      <date-picker [(date)]="date8"></date-picker>
+      <label for="date-picker8" class="fw-bold">Date Picker Example</label>
+      <date-picker [id]="'date-picker8'" [(date)]="date8"></date-picker>
       <pre id="date8">{{ date8 | json }}</pre>
     </section>
   </div>

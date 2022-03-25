@@ -15,6 +15,7 @@ import { NgbDate, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./date-picker.component.css'],
 })
 export class DatePickerComponent implements OnInit, OnChanges {
+  @Input() id = '';
   @Input()
   date: Date | null = null;
   @Input()
@@ -29,6 +30,9 @@ export class DatePickerComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.ngbDate = NgbDate.from(this.dateAdapter.fromModel(this.date));
+    if (!this.id) {
+      this.id = `date-picker-` + Math.random().toString(36).substring(4);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

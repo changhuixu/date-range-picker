@@ -1,6 +1,6 @@
 {
   "name": "@uiowa/date-range-picker",
-  "version": "7.1.0",
+  "version": "7.2.2",
   "author": "Changhui Xu <changhui-xu@uiowa.edu>",
   "contributors": [
     "Jacob Feuerbach <jacob-feuerbach@uiowa.edu>"
@@ -20,7 +20,6 @@
   "peerDependencies": {
     "@angular/common": ">=13.0.0",
     "@angular/core": ">=13.0.0",
-    "@angular/localize": ">=13.0.0",
     "@ng-bootstrap/ng-bootstrap": ">=12.0.0"
   },
   "dependencies": {

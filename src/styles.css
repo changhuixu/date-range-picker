@@ -3,3 +3,7 @@ html body {
   margin: 0;
   overflow-x: hidden;
 }
+
+.fw-bold {
+  font-weight: bold;
+}

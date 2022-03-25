@@ -36,3 +36,6 @@ svg {
   width: 1rem;
   height: 1rem;
 }
+.form-control[readonly] {
+  background-color: #fdfdfd !important;
+}

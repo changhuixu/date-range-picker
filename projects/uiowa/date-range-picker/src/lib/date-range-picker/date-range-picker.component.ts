@@ -22,6 +22,7 @@ import { DateRange } from '../models/date-range';
   styleUrls: ['./date-range-picker.component.css'],
 })
 export class DateRangePickerComponent implements OnInit, OnChanges {
+  @Input() id = '';
   @Input()
   dateRange: DateRange = new DateRange();
   @Input()
@@ -46,6 +47,8 @@ export class DateRangePickerComponent implements OnInit, OnChanges {
   constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
   ngOnInit() {
+    this.id =
+      this.id || `date-range-picker-` + Math.random().toString(36).substring(4);
     this.fromDate = NgbDate.from(
       this.dateAdapter.fromModel(this.dateRange.start)
     );
