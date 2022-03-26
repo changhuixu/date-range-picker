@@ -28,7 +28,7 @@ describe('date-picker tests', () => {
   it('should click outside and close', () => {
     cy.get('date-picker input').click();
     cy.get('ngb-datepicker').should('have.class', 'show');
-    cy.get('#date8').click();
+    cy.get('#date8').click({force: true});
     cy.get('ngb-datepicker').should('not.exist');
   });
 
