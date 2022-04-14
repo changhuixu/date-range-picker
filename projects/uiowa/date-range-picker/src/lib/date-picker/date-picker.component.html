@@ -17,9 +17,10 @@
     title="click to select a date"
   />
   <button
+    type="button"
     class="btn btn-outline-secondary d-flex align-items-center"
     (click)="d.toggle()"
-    type="button"
+    [disabled]="disabled"
   >
     <svg
       aria-hidden="true"

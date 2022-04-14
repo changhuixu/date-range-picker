@@ -20,9 +20,10 @@
     title="click to select a date range"
   />
   <button
+    type="button"
     class="btn btn-outline-secondary d-flex align-items-center"
     (click)="dp.toggle()"
-    type="button"
+    [disabled]="disabled"
   >
     <svg
       aria-hidden="true"
