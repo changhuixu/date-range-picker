@@ -18,7 +18,11 @@ export class AppComponent implements OnInit {
   dateRange6 = new DateRange(null, new Date(2018, 9, 1));
   dateRange7 = new DateRange(new Date('sssss'), new Date('aaaa'));
 
+  min8 = new Date(2018, 0, 15);
   date8 = new Date(2018, 0, 24);
+  date9 = new Date(2022, 6, 24, 22, 45, 42);
+  min9 = new Date(2022, 6, 23);
+  invalid = false;
 
   ngOnInit(): void {
     this.maxDate.setDate(this.maxDate.getDate() + 20);
@@ -29,5 +33,9 @@ export class AppComponent implements OnInit {
       new Date(2018, 9, 1),
       new Date(2018, 9, 19)
     );
+  }
+
+  changeDate2() {
+    this.date9 = new Date(2022, 7, 13, 12, 30, 42);
   }
 }

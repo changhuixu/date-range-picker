@@ -4,38 +4,38 @@ describe('date-picker tests', () => {
   });
 
   it('should show initial state', () => {
-    cy.get('date-picker input')
+    cy.get('#date-picker8')
       .should('have.value', '01/24/2018')
       .should('have.attr', 'readonly');
     cy.get('#date8').should('have.text', JSON.stringify(new Date(2018, 0, 24)));
-    cy.get('ngb-datepicker').should('not.exist');
+    cy.get('date-picker ngb-datepicker').should('not.exist');
   });
 
   it('should click input and open', () => {
-    cy.get('date-picker input').click();
-    cy.get('ngb-datepicker').should('have.class', 'show');
-    cy.get('date-picker input').click();
-    cy.get('ngb-datepicker').should('not.exist');
+    cy.get('#date-picker8').click();
+    cy.get('date-picker ngb-datepicker').should('have.class', 'show');
+    cy.get('#date-picker8').click();
+    cy.get('date-picker ngb-datepicker').should('not.exist');
   });
 
   it('should click icon and open', () => {
-    cy.get('date-picker > .input-group > .btn').click();
-    cy.get('ngb-datepicker').should('have.class', 'show');
-    cy.get('date-picker > .input-group > .btn').click();
-    cy.get('ngb-datepicker').should('not.exist');
+    cy.get('#date-picker > date-picker > .input-group > .btn').click();
+    cy.get('date-picker ngb-datepicker').should('have.class', 'show');
+    cy.get('#date-picker > date-picker > .input-group > .btn').click();
+    cy.get('date-picker ngb-datepicker').should('not.exist');
   });
 
   it('should click outside and close', () => {
-    cy.get('date-picker input').click();
-    cy.get('ngb-datepicker').should('have.class', 'show');
+    cy.get('#date-picker8').click();
+    cy.get('date-picker ngb-datepicker').should('have.class', 'show');
     cy.get('#date8').click({force: true});
-    cy.get('ngb-datepicker').should('not.exist');
+    cy.get('date-picker ngb-datepicker').should('not.exist');
   });
 
   it('should change date when click on Jan 18', () => {
-    cy.get('date-picker input').click();
-    cy.get('ngb-datepicker').should('have.class', 'show');
-    cy.get('.custom-day').then((days) => {
+    cy.get('#date-picker8').click();
+    cy.get('date-picker ngb-datepicker').should('have.class', 'show');
+    cy.get('date-picker .custom-day').then((days) => {
       // should show correct number of days
       expect(days.length).to.be.equal(42);
 
@@ -65,7 +65,7 @@ describe('date-picker tests', () => {
 
     // pick another day
     cy.get('[aria-label="Thursday, January 18, 2018"] > .custom-day').click();
-    cy.get('date-picker input')
+    cy.get('#date-picker8')
       .should('have.value', '01/18/2018')
       .should('have.attr', 'readonly');
     cy.get('#date8').should(
@@ -74,6 +74,6 @@ describe('date-picker tests', () => {
     );
 
     // should close calendar after picking a date
-    cy.get('ngb-datepicker').should('not.exist');
+    cy.get('date-picker ngb-datepicker').should('not.exist');
   });
 });

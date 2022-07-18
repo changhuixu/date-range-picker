@@ -72,8 +72,42 @@
     </section>
     <section id="date-picker" class="col-12 col-sm-6 col-lg-4 mb-4">
       <label for="date-picker8" class="fw-bold">Date Picker Example</label>
-      <date-picker [id]="'date-picker8'" [(date)]="date8"></date-picker>
+      <date-picker
+        [id]="'date-picker8'"
+        [(date)]="date8"
+        [minDate]="min8"
+      ></date-picker>
       <pre id="date8">{{ date8 | json }}</pre>
+      <hr />
+    </section>
+  </div>
+  <div class="row">
+    <section id="date-time-input" class="col-12 mb-4">
+      <label for="date-time-input9" class="fw-bold">
+        Date Time Input Example
+      </label>
+      <date-time-input
+        [id]="'date-time-input9'"
+        [(date)]="date9"
+        [min]="min9"
+        [isInvalid]="invalid"
+      ></date-time-input>
+      <pre id="date9">{{ date9 | dateTime }}</pre>
+      <button
+        type="button"
+        class="btn btn-primary me-2"
+        (click)="changeDate2()"
+      >
+        Change Date
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning me-2"
+        (click)="invalid = !invalid"
+      >
+        Change Validity
+      </button>
+      <hr />
     </section>
   </div>
 </div>

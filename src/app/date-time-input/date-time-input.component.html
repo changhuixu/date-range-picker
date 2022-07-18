@@ -1,0 +1,49 @@
+<div class="d-flex flex-wrap">
+  <div class="me-2" style="width: 234px">
+    <label for="{{ id }}-date" class="field-label">Date</label>
+    <date-picker
+      [id]="id + '-date'"
+      [(date)]="date"
+      [minDate]="min"
+      [maxDate]="max"
+      [isInvalid]="isInvalid"
+      (dateChange)="updateTime()"
+    ></date-picker>
+  </div>
+  <div>
+    <label for="{{ id }}-hours">Time</label>
+    <div class="d-flex align-items-center">
+      <select
+        id="{{ id }}-hours"
+        class="form-select w-auto"
+        [class.is-invalid]="isInvalid"
+        [(ngModel)]="hours"
+        (ngModelChange)="updateTime()"
+      >
+        <option *ngFor="let o of hourOptions" [ngValue]="o">
+          {{ o.toString().padStart(2, '0') }}
+        </option>
+      </select>
+      <div class="mx-1" style="font-size: larger; font-weight: 500">:</div>
+      <select
+        id="{{ id }}-minutes"
+        class="form-select w-auto me-2"
+        [class.is-invalid]="isInvalid"
+        [(ngModel)]="minutes"
+        (ngModelChange)="updateTime()"
+      >
+        <option *ngFor="let o of minuteOptions" [ngValue]="o">
+          {{ o.toString().padStart(2, '0') }}
+        </option>
+      </select>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="updateMeridiem()"
+      >
+        {{ meridiem }}
+      </button>
+    </div>
+  </div>
+  <div></div>
+</div>

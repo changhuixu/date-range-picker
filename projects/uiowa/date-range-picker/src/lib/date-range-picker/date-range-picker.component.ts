@@ -8,6 +8,7 @@ import {
   ViewChild,
   OnChanges,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import {
   NgbInputDatepicker,
@@ -20,6 +21,7 @@ import { DateRange } from '../models/date-range';
   selector: 'date-range-picker',
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateRangePickerComponent implements OnInit, OnChanges {
   @Input() id = '';

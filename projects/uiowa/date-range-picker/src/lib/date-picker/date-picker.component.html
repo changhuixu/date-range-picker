@@ -3,11 +3,15 @@
     ngbDatepicker
     #d="ngbDatepicker"
     class="form-control"
+    [class.is-invalid]="isInvalid"
     name="dp"
     [attr.id]="id"
     [(ngModel)]="ngbDate"
     (click)="d.toggle()"
     [disabled]="disabled"
+    [minDate]="ngbMinDate"
+    [maxDate]="ngbMaxDate"
+    [markDisabled]="isDisabled"
     [firstDayOfWeek]="7"
     [dayTemplate]="t"
     readonly
@@ -36,10 +40,16 @@
   </button>
 </div>
 
-<ng-template #t let-date="date" let-currentMonth="currentMonth">
+<ng-template
+  #t
+  let-date="date"
+  let-disabled="disabled"
+  let-currentMonth="currentMonth"
+>
   <span
     class="custom-day"
     [class.weekend]="isWeekend(date)"
+    [class.disabled]="disabled"
     [class.outside]="date.month !== currentMonth"
   >
     {{ date.day }}
