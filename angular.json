@@ -24,11 +24,11 @@
         "@schematics/angular:pipe": {
           "skipTests": true
         },
-        "@schematics/angular:service": {
+        "@schematics/angular:resolver": {
           "skipTests": true
         },
-        "@schematics/angular:application": {
-          "strict": true
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -44,7 +44,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles.css"],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -124,7 +127,6 @@
       }
     }
   },
-  "defaultProject": "date-range-picker-demo",
   "cli": {
     "analytics": "a5f6fbb0-95ea-4983-b15e-5e1d669337ba"
   }
