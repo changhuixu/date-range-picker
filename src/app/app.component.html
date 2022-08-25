@@ -80,6 +80,16 @@
       <pre id="date8">{{ date8 | json }}</pre>
       <hr />
     </section>
+    <section id="date-picker2" class="col-12 col-sm-6 col-lg-4 mb-4">
+      <label for="date-picker10" class="fw-bold">Date Picker Example2</label>
+      <date-picker
+        [id]="'date-picker10'"
+        [(date)]="date10"
+        [allowClear]="true"
+      ></date-picker>
+      <pre id="date10">{{ date10 | json }}</pre>
+      <hr />
+    </section>
   </div>
   <div class="row">
     <section id="date-time-input" class="col-12 mb-4">

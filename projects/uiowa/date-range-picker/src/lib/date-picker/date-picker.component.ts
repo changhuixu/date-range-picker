@@ -9,6 +9,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import {
+  NgbCalendar,
   NgbDate,
   NgbDateNativeAdapter,
   NgbDateStruct,
@@ -29,6 +30,7 @@ export class DatePickerComponent implements OnInit, OnChanges {
   @Input() minDate?: Date;
   @Input() maxDate?: Date;
   @Input() isInvalid = false;
+  @Input() allowClear = false;
 
   @Output()
   dateChange = new EventEmitter<Date>();
@@ -36,8 +38,12 @@ export class DatePickerComponent implements OnInit, OnChanges {
   ngbDate: NgbDate | null = null;
   ngbMinDate!: NgbDateStruct;
   ngbMaxDate!: NgbDateStruct;
+  today = this.calendar.getToday();
 
-  constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
+  constructor(
+    private readonly dateAdapter: NgbDateNativeAdapter,
+    private calendar: NgbCalendar
+  ) {}
 
   ngOnInit() {
     this.ngbDate = NgbDate.from(this.dateAdapter.fromModel(this.date));

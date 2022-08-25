@@ -28,7 +28,7 @@ describe('date-picker tests', () => {
   it('should click outside and close', () => {
     cy.get('#date-picker8').click();
     cy.get('date-picker ngb-datepicker').should('have.class', 'show');
-    cy.get('#date8').click({force: true});
+    cy.get('#date8').click({ force: true });
     cy.get('date-picker ngb-datepicker').should('not.exist');
   });
 
@@ -75,5 +75,31 @@ describe('date-picker tests', () => {
 
     // should close calendar after picking a date
     cy.get('date-picker ngb-datepicker').should('not.exist');
+  });
+
+  it('should clear date when click on Clear button', () => {
+    cy.get('#date-picker10').click();
+    cy.get('date-picker ngb-datepicker').should('have.class', 'show');
+    cy.get('date-picker ngb-datepicker .btn-primary').should(
+      'contain.text',
+      'Today'
+    );
+    cy.get('date-picker ngb-datepicker .btn-secondary').should(
+      'contain.text',
+      'Clear'
+    );
+
+    // click Today
+    const today = new Date();
+    const dateString = today.toISOString().substring(0, 10);
+    cy.get('date-picker ngb-datepicker .btn-primary').click();
+    cy.get('date-picker ngb-datepicker').should('not.exist');
+    cy.get('#date10').invoke('text').should('contain', dateString);
+
+    // click Clear
+    cy.get('#date-picker10').click();
+    cy.get('date-picker ngb-datepicker .btn-secondary').click();
+    cy.get('date-picker ngb-datepicker').should('not.exist');
+    cy.get('#date10').should('contain.text', '');
   });
 });

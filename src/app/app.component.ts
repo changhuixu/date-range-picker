@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   min8 = new Date(2018, 0, 15);
   date8 = new Date(2018, 0, 24);
+  date10: Date | null = new Date(2022, 7, 24);
   date9 = new Date(2022, 6, 24, 22, 45, 42);
   min9 = new Date(2022, 6, 23);
   invalid = false;
