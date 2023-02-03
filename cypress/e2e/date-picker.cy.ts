@@ -1,5 +1,5 @@
 describe('date-picker tests', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('');
   });
 
@@ -91,7 +91,7 @@ describe('date-picker tests', () => {
 
     // click Today
     const today = new Date();
-    const dateString = today.toISOString().substring(0, 10);
+    const dateString = toISOStringWithTimezone(today);
     cy.get('date-picker ngb-datepicker .btn-primary').click();
     cy.get('date-picker ngb-datepicker').should('not.exist');
     cy.get('#date10').invoke('text').should('contain', dateString);
@@ -103,3 +103,11 @@ describe('date-picker tests', () => {
     cy.get('#date10').should('contain.text', '');
   });
 });
+
+const toISOStringWithTimezone = (x: Date): string => {
+  const hoursDiff = x.getHours() - x.getTimezoneOffset() / 60;
+  const minutesDiff = (x.getHours() - x.getTimezoneOffset()) % 60;
+  x.setHours(hoursDiff);
+  x.setMinutes(minutesDiff);
+  return x.toISOString().substring(0, 10);
+};

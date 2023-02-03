@@ -1,7 +1,7 @@
 import { DateRange } from '../../projects/uiowa/date-range-picker/src/lib/models/date-range';
 
 describe('Unit Test DateRange Model Class', () => {
-  before(() => {
+  beforeEach(() => {
     expect(DateRange, 'DateRange').to.be.a('function');
   });
 

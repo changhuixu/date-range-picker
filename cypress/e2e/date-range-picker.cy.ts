@@ -1,7 +1,7 @@
 import { DateRange } from '../../projects/uiowa/date-range-picker/src/lib/models/date-range';
 
 describe('date-range-picker tests', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('');
   });
 
