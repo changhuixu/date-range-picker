@@ -12,14 +12,14 @@ Since **v4.0.0**, this library is only compatible with Angular >=10 and ng-boots
 
 Since **v3.0.0**, this library requires @angular/localize, due to updates in Angular 9 and ng-bootstrap 6.
 
-[![Build Status](https://img.shields.io/travis/changhuixu/date-range-picker/master.svg?label=Travis%20CI&style=flat-square)](https://app.travis-ci.com/changhuixu/date-range-picker)
+[![Build Status](https://github.com/changhuixu/date-range-picker/actions/workflows/main.yml/badge.svg)](https://github.com/changhuixu/date-range-picker/actions)
 [![npm](https://img.shields.io/npm/v/@uiowa/date-range-picker.svg?style=flat-square)](https://www.npmjs.com/package/@uiowa/date-range-picker)
 
 ```bash
 npm i @uiowa/date-range-picker
 ```
 
-## [Demo](https://date-range-picker.firebaseapp.com)
+## [Demo](https://changhuixu.github.io/date-range-picker/)
 
 ![date range picker demo](./date-range-picker-demo.gif)
 
