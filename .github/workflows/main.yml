@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout 🛎️
@@ -26,6 +26,7 @@ jobs:
           npm ci
           npm run build:lib
           npm run build:gh-pages
+          cp ./dist/date-range-picker-demo/browser/index.html ./dist/date-range-picker-demo/browser/404.html
 
       - name: Run e2e tests 🧪
         run: |
@@ -35,4 +36,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/date-range-picker-demo
+          folder: dist/date-range-picker-demo/browser

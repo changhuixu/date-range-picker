@@ -14,27 +14,27 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.1.7",
-    "@angular/common": "^16.1.7",
-    "@angular/compiler": "^16.1.7",
-    "@angular/core": "^16.1.7",
-    "@angular/forms": "^16.1.7",
-    "@angular/platform-browser": "^16.1.7",
-    "@angular/platform-browser-dynamic": "^16.1.7",
-    "@angular/router": "^16.1.7",
-    "@ng-bootstrap/ng-bootstrap": "^15.1.0",
-    "bootstrap": "^5.3.1",
+    "@angular/animations": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "bootstrap": "^5.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.1"
+    "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.1.6",
-    "@angular/cli": "~16.1.6",
-    "@angular/compiler-cli": "^16.1.7",
-    "cypress": "^12.17.2",
-    "ng-packagr": "^16.1.0",
-    "start-server-and-test": "^2.0.0",
-    "typescript": "~4.9.5"
+    "@angular-devkit/build-angular": "^17.0.5",
+    "@angular/cli": "^17.0.5",
+    "@angular/compiler-cli": "^17.0.0",
+    "cypress": "^13.6.0",
+    "ng-packagr": "^17.0.0",
+    "start-server-and-test": "^2.0.3",
+    "typescript": "~5.2.2"
   }
 }
