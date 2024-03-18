@@ -34,6 +34,21 @@ const d1 = DateRange.nextDays(7);
   /**
    * Examples:
  ```typescript
+const d1 = DateRange.lastDays(7);
+// a date range of a week before today
+ ```
+   * @param n Number of days before today.
+   */
+  static lastDays(n: number): DateRange {
+    const start = new Date();
+    start.setDate(start.getDate() - n);
+    const end = new Date();
+    return new DateRange(start, end);
+  }
+
+  /**
+   * Examples:
+ ```typescript
 const d1 = DateRange.nextTwoWeeks();
 // a date range of next two weeks since today
  ```
