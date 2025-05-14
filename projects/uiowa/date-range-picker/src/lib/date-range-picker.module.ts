@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
-  NgbDatepickerModule,
-  NgbDateParserFormatter,
   NgbDateNativeAdapter,
+  NgbDateParserFormatter,
+  NgbDatepickerModule,
 } from '@ng-bootstrap/ng-bootstrap';
-import { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
-import { NgbDateNativeParserFormatter } from './services/ngb-date-native-parser-formatter';
+import { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
 import { DateTimePipe } from './pipes/date-time.pipe';
+import { NgbDateNativeParserFormatter } from './services/ngb-date-native-parser-formatter';
 
 @NgModule({
   imports: [CommonModule, FormsModule, NgbDatepickerModule],

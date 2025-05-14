@@ -1,12 +1,12 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges,
-  SimpleChanges,
   ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
 } from '@angular/core';
 import {
   NgbCalendar,
@@ -20,6 +20,7 @@ import {
   templateUrl: './date-picker.component.html',
   styleUrls: ['./date-picker.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DatePickerComponent implements OnInit, OnChanges {
   @Input() id = '';
@@ -38,12 +39,14 @@ export class DatePickerComponent implements OnInit, OnChanges {
   ngbDate: NgbDate | null = null;
   ngbMinDate!: NgbDateStruct;
   ngbMaxDate!: NgbDateStruct;
-  today = this.calendar.getToday();
+  today!: NgbDate;
 
   constructor(
     private readonly dateAdapter: NgbDateNativeAdapter,
-    private calendar: NgbCalendar
-  ) {}
+    calendar: NgbCalendar
+  ) {
+    this.today = calendar.getToday();
+  }
 
   ngOnInit() {
     this.ngbDate = NgbDate.from(this.dateAdapter.fromModel(this.date));

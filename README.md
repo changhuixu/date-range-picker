@@ -2,6 +2,8 @@
 
 An Angular library of Date Range Picker. Dependencies: Angular, ng-bootstrap, Bootstrap >4 (css)
 
+Since **v19.0.0**, this library is only compatible with Angular >=19 and ng-bootstrap >=18.
+
 Since **v7.0.0**, this library is only compatible with Angular >=13 and ng-bootstrap >=12.
 
 Since **v6.0.0**, this library is only compatible with Angular >=13 and ng-bootstrap >=11.

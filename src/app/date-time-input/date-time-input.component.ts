@@ -14,6 +14,7 @@ import {
   templateUrl: './date-time-input.component.html',
   styleUrls: ['./date-time-input.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DateTimeInputComponent implements OnInit, OnChanges {
   @Input() id = '';

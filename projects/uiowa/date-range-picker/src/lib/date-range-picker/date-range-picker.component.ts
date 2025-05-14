@@ -1,19 +1,19 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  ElementRef,
-  ViewChild,
-  OnChanges,
-  SimpleChanges,
   ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import {
-  NgbInputDatepicker,
   NgbDate,
   NgbDateNativeAdapter,
+  NgbInputDatepicker,
 } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from '../models/date-range';
 
@@ -22,6 +22,7 @@ import { DateRange } from '../models/date-range';
   templateUrl: './date-range-picker.component.html',
   styleUrls: ['./date-range-picker.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class DateRangePickerComponent implements OnInit, OnChanges {
   @Input() id = '';

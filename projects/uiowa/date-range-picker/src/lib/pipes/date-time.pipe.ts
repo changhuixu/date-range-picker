@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'dateTime',
+  standalone: false,
 })
 export class DateTimePipe implements PipeTransform {
   transform(d: Date, ...args: unknown[]): string {
