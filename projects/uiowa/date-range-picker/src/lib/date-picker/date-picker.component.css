@@ -4,6 +4,14 @@
   display: inline-block;
   height: 2rem;
   width: 2rem;
+  border-radius: 0.5rem;
+}
+.custom-day:hover,
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.today {
+  border: 1px solid #0d6efd;
 }
 .custom-day.weekend {
   color: #d81e1e;

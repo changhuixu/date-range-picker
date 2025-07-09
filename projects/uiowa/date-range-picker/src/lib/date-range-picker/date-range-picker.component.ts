@@ -2,11 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
   OnChanges,
   OnInit,
-  Output,
+  output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -26,16 +25,11 @@ import { DateRange } from '../models/date-range';
 })
 export class DateRangePickerComponent implements OnInit, OnChanges {
   @Input() id = '';
-  @Input()
-  dateRange: DateRange = new DateRange();
-  @Input()
-  minDate?: Date;
-  @Input()
-  maxDate?: Date;
-  @Input()
-  disabled = false;
-  @Output()
-  dateRangeChange = new EventEmitter<DateRange>();
+  @Input() dateRange: DateRange = new DateRange();
+  @Input() minDate?: Date;
+  @Input() maxDate?: Date;
+  @Input() disabled = false;
+  dateRangeChange = output<DateRange>();
   hoveredDate: NgbDate | null = null;
 
   private fromDate: NgbDate | null = null;

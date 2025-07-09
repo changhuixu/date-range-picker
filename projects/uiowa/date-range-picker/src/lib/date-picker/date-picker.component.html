@@ -44,12 +44,19 @@
 <ng-template
   #dayTemplate
   let-date="date"
+  let-today="today"
+  let-selected="selected"
   let-disabled="disabled"
+  let-focused="focused"
   let-currentMonth="currentMonth"
 >
   <span
     class="custom-day"
     [class.weekend]="isWeekend(date)"
+    [class.today]="today"
+    [class.focused]="focused"
+    [class.bg-primary]="selected"
+    [class.text-white]="selected"
     [class.disabled]="disabled"
     [class.outside]="date.month !== currentMonth"
   >
@@ -58,19 +65,19 @@
 </ng-template>
 
 <ng-template #footerTemplate>
-  <div *ngIf="allowClear">
-    <hr class="my-0" />
-    <button
-      class="btn btn-primary btn-sm m-2 float-start"
-      (click)="ngbDate = today; onDateChange(today); d.close()"
-    >
-      Today
-    </button>
-    <button
-      class="btn btn-secondary btn-sm m-2 float-end"
-      (click)="ngbDate = null; dateChange.emit(undefined); d.close()"
-    >
-      Clear
-    </button>
-  </div>
+  <hr class="my-0" />
+  <button
+    class="btn btn-primary btn-sm m-2 float-start"
+    (click)="ngbDate = today; onDateChange(today); d.close()"
+  >
+    Today
+  </button>
+  @if(allowClear){
+  <button
+    class="btn btn-secondary btn-sm m-2 float-end"
+    (click)="ngbDate = null; dateChange.emit(undefined); d.close()"
+  >
+    Clear
+  </button>
+  }
 </ng-template>

@@ -8,7 +8,7 @@
     readonly
     [attr.id]="id"
     [disabled]="disabled"
-    [autoClose]="false"
+    autoClose="outside"
     [displayMonths]="2"
     [dayTemplate]="t"
     [showWeekNumbers]="false"
@@ -42,6 +42,7 @@
 <ng-template
   #t
   let-date="date"
+  let-today="today"
   let-focused="focused"
   let-disabled="disabled"
   let-currentMonth="currentMonth"
@@ -54,6 +55,7 @@
     "
     [class.faded]="isHovered(date) || isInside(date)"
     [class.weekend]="isWeekend(date)"
+    [class.today]="today"
     [class.disabled]="disabled"
     [class.outside]="date.month !== currentMonth"
     (mouseenter)="hoveredDate = date"

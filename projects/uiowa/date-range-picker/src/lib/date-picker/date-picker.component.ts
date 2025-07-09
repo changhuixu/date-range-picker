@@ -1,11 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
+  inject,
   Input,
   OnChanges,
   OnInit,
-  Output,
+  output,
   SimpleChanges,
 } from '@angular/core';
 import {
@@ -24,29 +24,21 @@ import {
 })
 export class DatePickerComponent implements OnInit, OnChanges {
   @Input() id = '';
-  @Input()
-  date: Date | null = null;
-  @Input()
-  disabled = false;
+  @Input() date: Date | null = null;
+  @Input() disabled = false;
   @Input() minDate?: Date;
   @Input() maxDate?: Date;
   @Input() isInvalid = false;
   @Input() allowClear = false;
 
-  @Output()
-  dateChange = new EventEmitter<Date>();
+  dateChange = output<Date | undefined>();
 
   ngbDate: NgbDate | null = null;
   ngbMinDate!: NgbDateStruct;
   ngbMaxDate!: NgbDateStruct;
-  today!: NgbDate;
+  today = inject(NgbCalendar).getToday();
 
-  constructor(
-    private readonly dateAdapter: NgbDateNativeAdapter,
-    calendar: NgbCalendar
-  ) {
-    this.today = calendar.getToday();
-  }
+  constructor(private readonly dateAdapter: NgbDateNativeAdapter) {}
 
   ngOnInit() {
     this.ngbDate = NgbDate.from(this.dateAdapter.fromModel(this.date));
