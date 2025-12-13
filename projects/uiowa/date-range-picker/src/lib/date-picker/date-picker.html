@@ -1,0 +1,73 @@
+<div class="input-group">
+  <input
+    ngbDatepicker
+    #d="ngbDatepicker"
+    class="form-control"
+    [class.is-invalid]="isInvalid()"
+    name="dp"
+    [attr.id]="id()"
+    [(ngModel)]="ngbDate"
+    (click)="d.toggle()"
+    [disabled]="disabled()"
+    [minDate]="ngbMinDate()"
+    [maxDate]="ngbMaxDate()"
+    [markDisabled]="isDisabled"
+    [firstDayOfWeek]="7"
+    [dayTemplate]="dayTemplate"
+    [footerTemplate]="footerTemplate"
+    readonly
+    (keydown.enter)="d.toggle()"
+    (dateSelect)="onDateChange($event)"
+    style="max-width: 13rem; cursor: pointer"
+    title="click to select a date"
+  />
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="d.toggle()"
+    [disabled]="disabled()"
+  >
+    📅
+  </button>
+</div>
+
+<ng-template
+  #dayTemplate
+  let-date="date"
+  let-today="today"
+  let-selected="selected"
+  let-disabled="disabled"
+  let-focused="focused"
+  let-currentMonth="currentMonth"
+>
+  <span
+    class="custom-day"
+    [class.weekend]="isWeekend(date)"
+    [class.today]="today"
+    [class.focused]="focused"
+    [class.bg-primary]="selected"
+    [class.text-white]="selected"
+    [class.disabled]="disabled"
+    [class.outside]="date.month !== currentMonth"
+  >
+    {{ date.day }}
+  </span>
+</ng-template>
+
+<ng-template #footerTemplate>
+  <hr class="my-0" />
+  <button
+    class="btn btn-primary btn-sm m-2 float-start"
+    (click)="ngbDate.set(today); onDateChange(today); d.close()"
+  >
+    Today
+  </button>
+  @if(allowClear()){
+  <button
+    class="btn btn-secondary btn-sm m-2 float-end"
+    (click)="ngbDate.set(null); date.set(null); d.close()"
+  >
+    Clear
+  </button>
+  }
+</ng-template>

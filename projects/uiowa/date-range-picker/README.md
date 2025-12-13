@@ -2,6 +2,8 @@
 
 An Angular library of Date Range Picker. Dependencies: Angular, ng-bootstrap, Bootstrap >4 (css)
 
+Since **v21.0.0**, this library is only compatible with Angular >=21 and ng-bootstrap >=20. The library provides standalone components.
+
 Since **v19.0.0**, this library is only compatible with Angular >=19 and ng-bootstrap >=18.
 
 Since **v7.0.0**, this library is only compatible with Angular >=13 and ng-bootstrap >=12.
@@ -23,6 +25,8 @@ npm i @uiowa/date-range-picker
 
 ## [Demo](https://changhuixu.github.io/date-range-picker/)
 
+![date range picker demo](./date-range-picker-demo.gif)
+
 ## Models
 
 - `DateRange`: an object represents a date range, includes start date and end date. e.g.,
@@ -37,44 +41,28 @@ const d5 = DateRange.nextMonth();
 
 ## Components
 
-- `<date-picker></date-picker>`: a wrapper of ng-bootstrap date picker
+- `<date-picker />`: a wrapper of ng-bootstrap date picker
 
-- `<date-range-picker></date-range-picker>`: a date range picker based on ng-bootstrap
+- `<date-range-picker />`: a date range picker based on ng-bootstrap
 
 ## Usage
 
-```typescript
-import { DateRangePickerModule } from '@uiowa/date-range-picker';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    ...,
-    DateRangePickerModule,
-    ...
-    ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-```
-
 ```html
 // in your component.html
-<date-range-picker
-  [(dateRange)]="dateRange"
-  [maxDate]="maxDate"
-></date-range-picker>
-<date-picker [(date)]="date"></date-picker>
+<date-range-picker [(dateRange)]="dateRange" [maxDate]="maxDate" />
+<date-picker [(date)]="date" />
 ```
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
-import { DateRange } from '@uiowa/date-range-picker';
+import { DatePicker, DateRange. DateRangePicker } from '@uiowa/date-range-picker';
 
 @Component({
-  ...
+  // ...
+  imports: [DatePicker, DateRangePicker, ...],
+  // ...
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   dateRange = new DateRange();
   maxDate = new Date();
   date: Date;

@@ -1,11 +1,12 @@
 {
   "name": "@uiowa/date-range-picker",
-  "version": "19.0.2",
+  "version": "21.0.0",
   "author": "Changhui Xu <changhui-xu@uiowa.edu>",
   "description": "An Angular library for date range picker.",
   "keywords": [
     "Angular",
     "uiowa",
+    "date picker",
     "date range picker",
     "bootstrap"
   ],
@@ -15,9 +16,9 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": ">=19.0.0",
-    "@angular/core": ">=19.0.0",
-    "@ng-bootstrap/ng-bootstrap": ">=18.0.0"
+    "@angular/common": ">=21.0.0",
+    "@angular/core": ">=21.0.0",
+    "@ng-bootstrap/ng-bootstrap": ">=20.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

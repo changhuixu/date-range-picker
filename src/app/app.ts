@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { DateRange } from '../../projects/uiowa/date-range-picker/src/public-api';
-// import { DateRange } from '@uiowa/date-range-picker';
+import { DatePipe, JsonPipe } from '@angular/common';
+import { Component } from '@angular/core';
+import {
+  DatePicker,
+  DateRange,
+  DateRangePicker,
+} from '../../projects/uiowa/date-range-picker/src/public-api';
+import { DateTimeInput } from './date-time-input/date-time-input';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  standalone: false,
+  imports: [DatePicker, DateRangePicker, DateTimeInput, JsonPipe, DatePipe],
+  templateUrl: './app.html',
+  styleUrl: './app.css',
 })
-export class AppComponent implements OnInit {
+export class App {
   dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
   dateRange1 = DateRange.nextTwoWeeks();
   dateRange2 = DateRange.nextMonth();
@@ -31,10 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   changeDate() {
-    this.dateRange4 = new DateRange(
-      new Date(2018, 9, 1),
-      new Date(2018, 9, 19)
-    );
+    this.dateRange4 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 19));
   }
 
   changeDate2() {

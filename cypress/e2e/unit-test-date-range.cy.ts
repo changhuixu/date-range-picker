@@ -1,4 +1,7 @@
-import { DateRange } from '../../projects/uiowa/date-range-picker/src/lib/models/date-range';
+import {
+  DateRange,
+  isValidDate,
+} from '../../projects/uiowa/date-range-picker/src/lib/models/date-range';
 
 describe('Unit Test DateRange Model Class', () => {
   beforeEach(() => {
@@ -7,27 +10,27 @@ describe('Unit Test DateRange Model Class', () => {
 
   context('isValidDate() tests', () => {
     it('String as Date should be false', () => {
-      const actual = DateRange.isValidDate('aaaaa');
+      const actual = isValidDate('aaaaa');
       expect(actual).to.be.false;
     });
     it('null as Date should be false', () => {
-      const actual = DateRange.isValidDate(null);
+      const actual = isValidDate(null);
       expect(actual).to.be.false;
     });
     it('empty as Date should be false', () => {
-      const actual = DateRange.isValidDate(NaN);
+      const actual = isValidDate(NaN);
       expect(actual).to.be.false;
     });
     it('Some Date as Date should be true', () => {
-      const actual = DateRange.isValidDate(new Date());
+      const actual = isValidDate(new Date());
       expect(actual).to.be.true;
     });
     it('Some Defined Date as Date should be true', () => {
-      const actual = DateRange.isValidDate(new Date(2018, 0, 1));
+      const actual = isValidDate(new Date(2018, 0, 1));
       expect(actual).to.be.true;
     });
     it('Some number as Date should be true', () => {
-      const actual = DateRange.isValidDate(123);
+      const actual = isValidDate(123);
       expect(actual).to.be.true;
     });
   });

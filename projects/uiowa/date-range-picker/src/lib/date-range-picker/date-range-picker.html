@@ -1,0 +1,55 @@
+<div class="input-group">
+  <input
+    ngbDatepicker
+    #dp="ngbDatepicker"
+    type="text"
+    class="form-control"
+    style="max-width: 13rem; cursor: pointer"
+    readonly
+    [attr.id]="id()"
+    [disabled]="disabled()"
+    autoClose="outside"
+    [displayMonths]="2"
+    [dayTemplate]="t"
+    [showWeekNumbers]="false"
+    [markDisabled]="isDisabled"
+    [firstDayOfWeek]="7"
+    (click)="dp.toggle()"
+    (keydown.enter)="dp.toggle()"
+    (dateSelect)="onDateChange($event, dp)"
+    title="click to select a date range"
+    [value]="formatInputText()"
+  />
+  <button
+    type="button"
+    class="btn btn-outline-secondary d-flex align-items-center"
+    (click)="dp.toggle()"
+    [disabled]="disabled()"
+  >
+    📅
+  </button>
+</div>
+
+<ng-template
+  #t
+  let-date="date"
+  let-today="today"
+  let-focused="focused"
+  let-disabled="disabled"
+  let-currentMonth="currentMonth"
+>
+  <span
+    class="custom-day"
+    [class.focused]="focused"
+    [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+    [class.faded]="isHovered(date) || isInside(date)"
+    [class.weekend]="isWeekend(date)"
+    [class.today]="today"
+    [class.disabled]="disabled"
+    [class.outside]="date.month !== currentMonth"
+    (mouseenter)="hoveredDate = date"
+    (mouseleave)="hoveredDate = null"
+  >
+    {{ date.day }}
+  </span>
+</ng-template>

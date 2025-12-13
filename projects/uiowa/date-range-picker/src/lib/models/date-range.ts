@@ -11,10 +11,7 @@ const d2 = new DateRange(new Date(), new Date(2018, 9, 10));
    * @param start [Optional] Start Date. Default: null.
    * @param end [Optional] End Date. Default: null
    */
-  constructor(
-    public start: Date | null = null,
-    public end: Date | null = null
-  ) {}
+  constructor(public start: Date | null = null, public end: Date | null = null) {}
 
   /**
    * Examples:
@@ -96,38 +93,13 @@ const d1 = DateRange.create({});
   static create(start: any, end: any): DateRange {
     let startDate = null;
     let endDate = null;
-    if (DateRange.isValidDate(start)) {
+    if (isValidDate(start)) {
       startDate = new Date(start);
     }
-    if (DateRange.isValidDate(end)) {
+    if (isValidDate(end)) {
       endDate = new Date(end);
     }
     return new DateRange(startDate, endDate);
-  }
-
-  /**
-   * Examples:
- ```typescript
-const isValid = DateRange.isValidDate(new Date());
- ```
-   * @param value date you want to verify as date
-   */
-  static isValidDate(value: any): boolean {
-    if (!value) {
-      return false;
-    }
-
-    switch (typeof value) {
-      case 'number':
-        return true;
-      case 'string':
-        return !isNaN(Date.parse(value));
-      default:
-        if (value instanceof Date) {
-          return !isNaN(value.getTime());
-        }
-        return false;
-    }
   }
 
   /**
@@ -142,26 +114,48 @@ const isEqual = a.equals(new DateRange());
     if (!dateRange) {
       return false;
     }
-    return (
-      DateRange.dateEqual(dateRange.start, this.start) &&
-      DateRange.dateEqual(dateRange.end, this.end)
-    );
+    return dateEqual(dateRange.start, this.start) && dateEqual(dateRange.end, this.end);
+  }
+}
+
+/**
+ *
+ * @param date1 a Date object or NULL
+ * @param date2 a Date object or NULL
+ */
+export function dateEqual(date1: Date | null, date2: Date | null): boolean {
+  if (date1 === null) {
+    return date2 === null;
+  } else if (date2 === null) {
+    return false;
   }
 
-  /**
-   *
-   * @param date1 a Date object or NULL
-   * @param date2 a Date object or NULL
-   */
-  static dateEqual(date1: Date | null, date2: Date | null): boolean {
-    if (date1 === null) {
-      return date2 === null;
-    } else if (date2 === null) {
-      return false;
-    }
+  const d1 = date1 instanceof Date ? date1 : new Date(date1);
+  const d2 = date2 instanceof Date ? date2 : new Date(date2);
+  return d1.toLocaleDateString() === d2.toLocaleDateString();
+}
 
-    const d1 = date1 instanceof Date ? date1 : new Date(date1);
-    const d2 = date2 instanceof Date ? date2 : new Date(date2);
-    return d1.toLocaleDateString() === d2.toLocaleDateString();
+/**
+   * Examples:
+ ```typescript
+const isValid = DateRange.isValidDate(new Date());
+ ```
+   * @param value date you want to verify as date
+   */
+export function isValidDate(value: number | Date | string | null | undefined): boolean {
+  if (!value) {
+    return false;
+  }
+
+  switch (typeof value) {
+    case 'number':
+      return true;
+    case 'string':
+      return !isNaN(Date.parse(value));
+    default:
+      if (value instanceof Date) {
+        return !isNaN(value.getTime());
+      }
+      return false;
   }
 }
