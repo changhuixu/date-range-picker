@@ -6,7 +6,6 @@ import {
   input,
   linkedSignal,
   model,
-  SimpleChanges,
   viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -59,11 +58,7 @@ export class DateRangePicker implements AfterViewInit {
       };
     }
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['dateRange'] || changes['disabled']) {
-      this.ngAfterViewInit();
-    }
-  }
+
   onDateChange(date: NgbDate, dp: NgbInputDatepicker) {
     if (!this.fromDate() && !this.toDate()) {
       this.fromDate.set(date);
@@ -80,7 +75,6 @@ export class DateRangePicker implements AfterViewInit {
         this.dateAdapter.toModel(this.toDate())
       )
     );
-    this.formatInputText();
   }
 
   formatInputText = computed(() => {
@@ -91,7 +85,7 @@ export class DateRangePicker implements AfterViewInit {
       isValidDate(this.dateRange().start!) &&
       isValidDate(this.dateRange().end!)
     ) {
-      text = `${this.dateRange().start!.toLocaleDateString()} - ${this.dateRange().end!.toLocaleDateString()}`;
+      text = this.dateRange().toString();
     }
     return text;
   });

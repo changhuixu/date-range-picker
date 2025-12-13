@@ -116,6 +116,10 @@ const isEqual = a.equals(new DateRange());
     }
     return dateEqual(dateRange.start, this.start) && dateEqual(dateRange.end, this.end);
   }
+
+  public toString(): string {
+    return `${this.start?.toLocaleDateString()} - ${this.end?.toLocaleDateString()}`;
+  }
 }
 
 /**
